@@ -317,3 +317,10 @@ h3{font-size:1.1rem}
 .grid{display:grid;columns:auto;grid-template-columns:repeat(auto-fill,minmax(9rem,1fr));gap:.7rem;align-items:start}
 .shot{margin-bottom:0;break-inside:auto}
 .shot,.arch,.heartqr img{background:linear-gradient(135deg,var(--glass-hi),var(--glass))}
+
+/* ---- galeri rapi: semua foto sama ukuran, tanpa bingkai dalam ---- */
+.grid{grid-template-columns:repeat(3,1fr);gap:.8rem;align-items:stretch}
+@media(max-width:560px){.grid{grid-template-columns:repeat(2,1fr);gap:.6rem}}
+.shot,.shot:nth-child(3n+2){aspect-ratio:4/5;width:100%;padding:0;border:0;border-radius:1rem;overflow:hidden;line-height:0;display:block}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;display:block}
+.shot:nth-child(n):hover{transform:translateY(-4px)}
