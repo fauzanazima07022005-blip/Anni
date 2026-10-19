@@ -316,3 +316,5 @@ h3{font-size:1.1rem}
 .heartqr::after{display:none}
 .grid{display:grid;columns:auto;grid-template-columns:repeat(auto-fill,minmax(9rem,1fr));gap:.7rem;align-items:start}
 .shot{margin-bottom:0;break-inside:auto}
+
+.shot,.arch,.heartqr img{background:linear-gradient(135deg,var(--glass-hi),var(--glass))}

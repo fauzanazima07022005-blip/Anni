@@ -175,4 +175,11 @@ if("IntersectionObserver" in window){const so=new IntersectionObserver(es=>es.fo
 if(!reduce)setInterval(()=>{const b=document.createElement("span"),z=6+Math.random()*16;b.className="bub";
   b.style.cssText=`left:${Math.random()*100}%;--s:${z}px;--dx:${Math.random()*80-40}px`;
   petals.appendChild(b);setTimeout(()=>b.remove(),15500)},1300);
+
+/* ---- pengaman foto: coba lagi sekali, kalau tetap gagal sembunyikan ikon rusak ---- */
+function fixImg(i){
+  if(i.dataset.r){i.style.opacity="0";return}
+  i.dataset.r="1";const u=i.src.split("?")[0];i.src=u+"?r="+Date.now()}
+$$("img").forEach(i=>{i.addEventListener("error",()=>fixImg(i));
+  if(i.complete&&i.naturalWidth===0&&i.src.indexOf("data:")!==0)fixImg(i)});
 })();
