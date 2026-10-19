@@ -337,3 +337,203 @@ html{font-size:14px}
 .tl h3{font-size:1rem}
 .tl p,.reasons p{font-size:.92rem}
 .lead{font-size:.93rem}
+
+/* ---- tambahan: bintang, buka kalau, game, angka, janji ---- */
+@keyframes twinkle{from{opacity:.2}to{opacity:.9}}
+@keyframes drop{from{top:-2.5rem}to{top:15rem}}
+@keyframes fpop{to{transform:scale(2.2);opacity:0}}
+@keyframes trail{to{transform:translate(var(--dx),-30px) scale(.4);opacity:0}}
+.stars{position:fixed;inset:0;z-index:-1;pointer-events:none;animation:twinkle 4s ease-in-out infinite alternate;
+  background-image:radial-gradient(1.5px 1.5px at 12% 22%,#fff,transparent),radial-gradient(1px 1px at 28% 68%,#fff,transparent),radial-gradient(1.5px 1.5px at 44% 12%,#fff,transparent),radial-gradient(1px 1px at 63% 38%,#fff,transparent),radial-gradient(1.5px 1.5px at 78% 74%,#fff,transparent),radial-gradient(1px 1px at 90% 16%,#fff,transparent),radial-gradient(1px 1px at 54% 88%,#fff,transparent),radial-gradient(1.5px 1.5px at 6% 82%,#fff,transparent)}
+:root[data-theme="light"] .stars{display:none}
+.fx span.t{animation:trail .9s ease-out forwards;font-size:.8rem;opacity:.8}
+
+.when{display:grid;grid-template-columns:repeat(2,1fr);gap:.7rem;width:100%;max-width:26rem}
+.env{display:grid;gap:.3rem;justify-items:center;padding:1rem .6rem;border-radius:1.1rem;background:var(--glass);border:1px solid var(--glass-line);font-weight:600;font-size:.9rem;transition:box-shadow .3s,background .3s}
+.env span{font-size:1.8rem;transition:transform .4s}
+.env:hover span,.env.on span{transform:scale(1.2) rotate(-8deg)}
+.env.on{background:var(--glass-hi);box-shadow:0 0 0 1.5px var(--rose),var(--shadow-g)}
+.when__msg{max-width:26rem;font:italic 600 1.05rem/1.7 var(--serif)}
+.when__msg.pop,#promise-done.pop{animation:up .6s}
+
+.arena{position:relative;width:100%;max-width:26rem;height:15rem;border-radius:1.2rem;overflow:hidden;background:var(--glass);border:1px solid var(--glass-line)}
+.score{position:absolute;top:.6rem;left:.9rem;font:600 .85rem var(--sans);color:var(--gold)}
+.fh{position:absolute;top:-2.5rem;font-size:1.8rem;line-height:1;color:var(--rose);animation:drop 4s linear forwards;touch-action:manipulation;padding:.3rem}
+.fh.pop{animation:fpop .3s forwards}
+
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:.7rem;width:100%}
+@media(min-width:600px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stats div{padding:1rem .6rem;border-radius:1.1rem;background:var(--glass);border:1px solid var(--glass-line);display:grid;gap:.2rem}
+.stats b{font:600 2rem var(--serif);background:linear-gradient(90deg,var(--gold),var(--rose));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stats span{font-size:.8rem;color:var(--soft)}
+
+.promise{list-style:none;padding:0;display:grid;gap:.6rem}
+.pr{display:flex;align-items:center;gap:.8rem;width:100%;text-align:left;padding:.9rem 1rem;border-radius:1rem;background:var(--glass);border:1px solid var(--glass-line);transition:background .3s,box-shadow .3s}
+.pr i{font-style:normal;display:grid;place-items:center;flex:none;width:1.6rem;height:1.6rem;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--rose);color:var(--rose);transition:transform .6s,background .3s}
+.pr.sealed{background:var(--glass-hi);box-shadow:0 0 0 1.5px var(--gold)}
+.pr.sealed i{background:var(--gold);color:#3a2300;box-shadow:none;transform:scale(1.15) rotate(360deg)}
+
+/* ---- variasi tata letak: tidak lurus ke bawah lagi ---- */
+#site{overflow-x:clip}
+.sec{position:relative}
+
+/* panel zig-zag kiri-kanan di layar lebar */
+@media(min-width:900px){
+  section.sec:nth-of-type(odd){margin-left:calc(50% - 26rem);margin-right:auto}
+  section.sec:nth-of-type(even){margin-left:calc(50% - 18rem);margin-right:auto}
+}
+/* bola cahaya yang mengintip dari pinggir panel */
+.sec::after{content:"";position:absolute;width:9rem;height:9rem;border-radius:50%;right:-2.5rem;top:-2.5rem;z-index:-1;pointer-events:none;
+  background:radial-gradient(circle,var(--rose),transparent 70%);opacity:.4;filter:blur(8px)}
+section.sec:nth-of-type(even)::after{right:auto;left:-2.5rem;top:auto;bottom:-2.5rem;background:radial-gradient(circle,var(--gold),transparent 70%);opacity:.3}
+
+/* bagian terbuka tanpa kotak + hiasan besar */
+#boost,#stats,#fact{background:transparent;border-color:transparent;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+#boost::after,#stats::after,#fact::after{display:none}
+#boost::before{content:"\201C";position:absolute;top:-2.5rem;left:50%;transform:translateX(-50%);font:600 13rem/1 var(--serif);color:var(--rose);opacity:.14;pointer-events:none}
+#hug{background:radial-gradient(circle at 50% 72%,rgba(154,109,251,.3),transparent 62%),var(--glass)}
+
+/* pita kata miring */
+.marquee.tilt{transform:rotate(-2deg);margin:2.2rem -2rem;width:calc(100% + 4rem);border:0;border-radius:0;
+  background:linear-gradient(90deg,var(--rose),var(--gold));-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:0 12px 30px -14px rgba(0,0,0,.6)}
+.marquee.tilt span{color:#1a0a33;font-weight:600}
+.marquee.tilt.r{transform:rotate(1.6deg)}
+.marquee.tilt.r div{animation-direction:reverse}
+
+/* galeri jadi tumpukan foto polaroid */
+.grid{display:flex;flex-wrap:wrap;justify-content:center;gap:0;padding:.8rem 0}
+.grid .shot:nth-child(n){width:min(10.5rem,44%);aspect-ratio:auto;height:auto;padding:.45rem .45rem 2.2rem;margin:-.3rem .1rem;
+  background:#fff;border-radius:.25rem;overflow:visible;line-height:1.2;position:relative;box-shadow:0 14px 28px -12px rgba(0,0,0,.6);transition:transform .35s}
+.grid .shot img{aspect-ratio:4/5;height:auto;border-radius:.1rem;object-position:50% 25%}
+.grid .shot::after{content:attr(data-cap);position:absolute;left:.5rem;right:.5rem;bottom:.35rem;font:italic 400 .64rem/1.15 var(--serif);color:#3b1f2f;text-align:center;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.grid .shot:nth-child(1){transform:rotate(-4deg)}
+.grid .shot:nth-child(2){transform:rotate(3deg) translateY(.8rem)}
+.grid .shot:nth-child(3){transform:rotate(-2deg)}
+.grid .shot:nth-child(4){transform:rotate(4deg) translateY(.5rem)}
+.grid .shot:nth-child(5){transform:rotate(-3deg)}
+.grid .shot:nth-child(6){transform:rotate(2.5deg) translateY(.6rem)}
+.grid .shot:nth-child(n):hover{transform:rotate(0) scale(1.12);z-index:5}
+
+/* alasan: nomor besar samar + kartu naik turun */
+.reasons{counter-reset:r}
+.reasons li,.reasons li:last-child{counter-increment:r;position:relative;overflow:hidden}
+.reasons li::after{content:"0" counter(r);position:absolute;right:.6rem;top:-.3rem;font:600 3.2rem var(--serif);opacity:.1;pointer-events:none}
+@media(min-width:600px){.reasons li:nth-child(even){margin-top:1.2rem}}
+
+/* timeline berkelok kiri-kanan di layar lebar */
+@media(min-width:700px){
+  .tl{border:0;padding:0;position:relative;gap:1.5rem}
+  .tl::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;transform:translateX(-50%);background:linear-gradient(var(--rose),var(--gold))}
+  .tl li{width:50%;padding-right:2rem;text-align:right}
+  .tl li:nth-child(even){margin-left:50%;padding-right:0;padding-left:2rem;text-align:left}
+  .tl li::before{left:auto;right:-7px}
+  .tl li:nth-child(even)::before{right:auto;left:-7px}
+}
+
+/* ---- tanpa kotak kaku: bagian transparan, foto jadi polaroid ---- */
+.sec{position:relative;isolation:isolate;background:transparent;border:0;box-shadow:none;border-radius:0;
+  -webkit-backdrop-filter:none;backdrop-filter:none;padding:3.2rem 1.2rem;margin:0 auto}
+.sec::before{content:"";position:absolute;z-index:-1;pointer-events:none;width:22rem;height:22rem;top:50%;left:-6rem;transform:translateY(-50%);
+  border-radius:50%;background:radial-gradient(closest-side,rgba(154,109,251,.22),transparent);filter:blur(10px)}
+.sec:nth-of-type(even)::before{left:auto;right:-6rem;background:radial-gradient(closest-side,rgba(255,211,110,.12),transparent)}
+
+.marquee{background:none;border:0;-webkit-backdrop-filter:none;backdrop-filter:none}
+.reasons li,.reasons li:last-child{background:none;border:0;border-left:2px solid var(--rose);border-radius:0 1rem 1rem 0;padding:.5rem 0 .5rem 1rem;box-shadow:none}
+.reasons li:hover{transform:translateX(4px);box-shadow:none}
+.env,.stats div,.pr,.arena{background:rgba(255,255,255,.03);border:1px solid rgba(190,170,255,.14);border-radius:1.6rem;box-shadow:none}
+.paper{background:rgba(255,255,255,.05);border:1px dashed var(--glass-line);border-radius:1.4rem;box-shadow:none}
+
+/* foto: bingkai polaroid miring + selotip */
+.grid{gap:1.5rem .9rem;padding:.7rem}
+.shot,.shot:nth-child(3n+2){position:relative;aspect-ratio:auto;height:auto;padding:.5rem .5rem 0;background:#fffaf5;border-radius:.35rem;
+  overflow:visible;line-height:normal;box-shadow:0 14px 26px -14px rgba(0,0,0,.65);transform:rotate(var(--r,0deg));transition:transform .35s,box-shadow .35s}
+.shot:nth-child(odd){--r:-2.5deg}
+.shot:nth-child(even){--r:2deg}
+.shot:nth-child(3n){--r:-1deg}
+.shot::before{content:"";position:absolute;top:-.6rem;left:50%;width:3.2rem;height:1.1rem;transform:translateX(-50%) rotate(-3deg);background:rgba(255,236,170,.7);z-index:1}
+.shot::after{content:attr(data-cap);display:block;padding:.5rem .15rem .55rem;font:italic 600 .72rem var(--serif);color:#6a4b5b;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.shot img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;object-position:50% 25%;border-radius:.2rem;transition:none}
+.shot:hover img{transform:none}
+.shot:nth-child(n):hover{transform:rotate(0deg) translateY(-6px) scale(1.04);z-index:2;box-shadow:0 22px 34px -14px rgba(0,0,0,.7)}
+.lightbox img{border:10px solid #fffaf5;border-bottom-width:30px;border-radius:.3rem}
+
+/* foto utama: bingkai emas berlapis */
+.arch{box-shadow:0 0 0 5px rgba(255,255,255,.08),0 0 0 6px var(--gold),0 0 0 14px rgba(255,211,110,.12),0 30px 60px -25px #000}
+
+/* ===== TAMBAHAN RAPI: tempel di PALING BAWAH style.css ===== */
+html{font-size:16px}
+html body{font-size:1rem;line-height:1.75}
+html body h1{font-size:clamp(2.3rem,7vw,3.6rem)}
+html body h2{font-size:clamp(1.7rem,4.5vw,2.3rem)}
+html body h3{font-size:1.2rem}
+html body .lead{font-size:1.05rem;max-width:32rem;margin-inline:auto}
+html body .small{font-size:.9rem}
+html body .hero .small{font-size:.78rem}
+
+/* semua bagian rata tengah, lebar sama, jarak sama */
+html body .sec{width:min(44rem,calc(100% - 2rem));padding:4rem 1.2rem;gap:1.1rem;text-align:center;justify-items:center}
+html body .sec h2::before,html body .sec h2::after{margin-inline:auto}
+html body .hero{max-width:44rem;gap:1.1rem;padding:6.5rem 1.2rem 3rem}
+html body .reasons,html body .tl,html body .promise,html body .paper{width:100%;text-align:left}
+html body .paper{max-width:32rem}
+html body .paper p{font-size:1.1rem}
+
+/* nav, tombol, kartu */
+html body .nav{width:min(52rem,calc(100% - 1.4rem))}
+html body .nav ul a{font-size:.88rem}
+html body .brand{font-size:1.05rem}
+html body .btn{font-size:1rem;padding:.8rem 1.7rem}
+html body .reasons p,html body .tl p{font-size:1rem}
+html body .reasons{gap:1rem}
+html body .tl{gap:1.4rem}
+html body .tl h3{font-size:1.15rem}
+html body .env{font-size:1rem}
+html body .stats span{font-size:.9rem}
+html body .stats b{font-size:2.2rem}
+html body .pr{font-size:1rem}
+html body .quote{font-size:clamp(1.4rem,4vw,1.8rem)}
+html body .hugtext{font-size:1.15rem}
+html body .flip__f,html body .flip__b{font-size:1.15rem}
+html body .when__msg{font-size:1.15rem}
+html body .score{font-size:.95rem}
+
+/* foto rapi: grid seragam, polaroid sama besar */
+html body .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem 1rem;width:100%;padding:.6rem}
+@media(max-width:560px){html body .grid{grid-template-columns:repeat(2,1fr);gap:1.3rem .8rem}}
+html body .shot::after{font-size:.85rem}
+html body .depth{font-size:.7rem}
+html body .arch{width:min(12rem,55vw)}
+html body .marquee span{font-size:1.15rem}
+html body .wafloat{width:3.4rem;height:3.4rem;font-size:1.5rem}
+
+/* ===== KOTAK TRANSPARAN + BINGKAI FOTO: tempel di PALING BAWAH style.css ===== */
+/* kotak bagian: balik lagi, tapi bening */
+html body .sec{background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.015));border:1px solid rgba(255,255,255,.14);border-radius:1.8rem;
+  -webkit-backdrop-filter:blur(10px) saturate(1.3);backdrop-filter:blur(10px) saturate(1.3);
+  box-shadow:0 20px 50px -30px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.12);margin:1.2rem auto}
+html[data-theme="light"] body .sec{background:linear-gradient(145deg,rgba(255,255,255,.5),rgba(255,255,255,.18));border-color:rgba(255,255,255,.75);
+  box-shadow:0 20px 50px -30px rgba(150,50,90,.35),inset 0 1px 0 rgba(255,255,255,.8)}
+html body .marquee{background:rgba(255,255,255,.04);border-block:1px solid rgba(255,255,255,.12);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+
+/* kotak kecil di dalamnya: bening juga */
+html body .reasons li,html body .reasons li:last-child{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.13);border-radius:1.2rem;padding:1.1rem 1.2rem}
+html body .env,html body .stats div,html body .pr,html body .arena{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.14);border-radius:1.2rem}
+html body .paper{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:1.4rem}
+
+/* bingkai foto: emas berlapis + lencana hati */
+html body .shot,html body .shot:nth-child(3n+2){position:relative;padding:.5rem;border:5px solid transparent;border-radius:1rem;overflow:visible;line-height:0;
+  background:linear-gradient(rgba(26,10,52,.9),rgba(26,10,52,.9)) padding-box,linear-gradient(135deg,#fff1b8,#d9a441 30%,#fff6d4 50%,#b9822f 75%,#f5d27a) border-box;
+  box-shadow:0 16px 30px -16px rgba(0,0,0,.7),0 0 0 1px rgba(255,211,110,.22);transform:rotate(var(--r,0deg))}
+html[data-theme="light"] body .shot{background:linear-gradient(#fff8ee,#fff8ee) padding-box,linear-gradient(135deg,#fff1b8,#d9a441 30%,#fff6d4 50%,#b9822f 75%,#f5d27a) border-box}
+html body .shot:nth-child(odd){--r:-1.5deg}
+html body .shot:nth-child(even){--r:1.5deg}
+html body .shot:nth-child(3n){--r:-.5deg}
+html body .shot::before{content:"♡";position:absolute;top:-1rem;left:50%;width:1.8rem;height:1.8rem;transform:translateX(-50%);border-radius:50%;
+  background:linear-gradient(135deg,#ffe9a8,#c8923a);color:#3a2300;display:grid;place-items:center;font:600 1rem/1 var(--sans);z-index:2}
+html body .shot::after{content:none}
+html body .shot img{aspect-ratio:4/5;height:auto;border-radius:.55rem;object-fit:cover;object-position:50% 25%;outline:1px solid rgba(255,211,110,.5);outline-offset:-1px}
+html body .shot:nth-child(n):hover{transform:rotate(0deg) translateY(-6px) scale(1.04);z-index:2}
+html body .grid{gap:1.8rem 1rem}
+html body .lightbox img{border:8px solid transparent;border-radius:1rem;
+  background:linear-gradient(#1a0a33,#1a0a33) padding-box,linear-gradient(135deg,#fff1b8,#d9a441 30%,#fff6d4 50%,#b9822f 75%,#f5d27a) border-box}
