@@ -537,3 +537,21 @@ html body .shot:nth-child(n):hover{transform:rotate(0deg) translateY(-6px) scale
 html body .grid{gap:1.8rem 1rem}
 html body .lightbox img{border:8px solid transparent;border-radius:1rem;
   background:linear-gradient(#1a0a33,#1a0a33) padding-box,linear-gradient(135deg,#fff1b8,#d9a441 30%,#fff6d4 50%,#b9822f 75%,#f5d27a) border-box}
+
+/* ===== RAPIKAN + FOTO LEBIH BESAR: tempel di PALING BAWAH style.css ===== */
+/* semua kotak sejajar di tengah, nggak geser kiri-kanan */
+html body .sec{width:min(50rem,calc(100% - 2rem));margin:1.2rem auto;transform:none;translate:none;rotate:none}
+
+/* kartu alasan: 2 kolom sama tinggi, tanpa naik-turun, nomor nggak nabrak judul */
+html body .reasons{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;width:100%;counter-reset:r}
+@media(max-width:600px){html body .reasons{grid-template-columns:1fr}}
+html body .reasons li,html body .reasons li:nth-child(n){counter-increment:r;position:relative;display:block;margin:0;transform:none;
+  padding:1.3rem;text-align:left;overflow:hidden}
+html body .reasons li::after{content:"0" counter(r);position:absolute;right:.9rem;top:.5rem;font:600 2.4rem/1 var(--serif);color:rgba(255,255,255,.07);pointer-events:none}
+html body .reasons li h3{margin:0 0 .4rem;padding-right:3rem;font-size:1.15rem;line-height:1.25}
+html body .reasons li p{margin:0}
+
+/* foto lebih besar: 3 kolom di laptop, 2 di HP */
+html body .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem 1.2rem;width:100%;padding:.8rem}
+@media(max-width:560px){html body .grid{grid-template-columns:repeat(2,1fr);gap:1.4rem .9rem}}
+html body .shot,html body .shot:nth-child(n){width:100%;max-width:none}
