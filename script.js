@@ -182,4 +182,59 @@ function fixImg(i){
   i.dataset.r="1";const u=i.src.split("?")[0];i.src=u+"?r="+Date.now()}
 $$("img").forEach(i=>{i.addEventListener("error",()=>fixImg(i));
   if(i.complete&&i.naturalWidth===0&&i.src.indexOf("data:")!==0)fixImg(i)});
+
+/* ---- Buka kalau... ---- */
+const WHEN=["Nggak apa-apa nangis dulu. Habis itu cuci muka, minum air putih, terus ingat ya: kamu nggak sendirian. Ada aku yang peduli banget sama kamu.",
+ "Taruh dulu semuanya. Kamu udah berusaha banyak hari ini. Istirahat ya, besok kita mulai pelan-pelan lagi.",
+ "Aku juga kangen. Coba lihat langit, kita lagi lihat langit yang sama. Dan nanti, ayo ketemu.",
+ "Pejamin mata, tarik napas pelan. Anggap aja aku lagi nemenin kamu. Selamat tidur, Anieza. Mimpi indah ya."];
+const envs=$$(".env"), wm=$("#when-msg");
+envs.forEach((b,i)=>b.addEventListener("click",()=>{
+  envs.forEach(x=>x.classList.toggle("on",x===b));
+  wm.hidden=false;wm.textContent=WHEN[i];wm.classList.remove("pop");void wm.offsetWidth;wm.classList.add("pop");
+  const r=b.getBoundingClientRect();hearts(r.left+r.width/2,r.top,5)}));
+
+/* ---- Game tangkap hati ---- */
+const arena=$("#arena"), sc=$("#score"), gb=$("#game-btn"), gm=$("#game-msg");
+let gs=0, gn=0, gt=null, gend=null, won=false;
+function spawn(){const h=document.createElement("button");h.className="fh";h.type="button";h.textContent=["♡","♥","💗"][gn%3];
+  h.setAttribute("aria-label","hati");h.style.left=(5+Math.random()*85)+"%";h.style.animationDuration=(3+Math.random()*1.5)+"s";
+  h.addEventListener("pointerdown",e=>{e.stopPropagation();if(h.classList.contains("pop")||won)return;
+    h.style.top=getComputedStyle(h).top;h.classList.add("pop");sc.textContent=`${++gs} / 10`;setTimeout(()=>h.remove(),300);if(gs>=10)win()});
+  h.addEventListener("animationend",()=>{if(!h.classList.contains("pop"))h.remove()});arena.appendChild(h)}
+function stopG(){clearInterval(gt);gt=null;clearTimeout(gend);gb.disabled=false;gb.textContent="Main lagi"}
+function say(t){gm.textContent=t;gm.classList.remove("pop");void gm.offsetWidth;gm.classList.add("pop")}
+function win(){won=true;stopG();$$(".fh",arena).forEach(x=>x.remove());
+  say("Yey, semuanya ketangkep! Sama kayak kamu yang udah nangkep hatiku. ♡");
+  const r=arena.getBoundingClientRect();if(!reduce)hearts(r.left+r.width/2,r.top+r.height/2,18)}
+gb.addEventListener("click",()=>{if(gt)return;gs=0;gn=0;won=false;sc.textContent="0 / 10";gm.textContent="";
+  $$(".fh",arena).forEach(x=>x.remove());gb.disabled=true;gb.textContent="Ayo cepat...";
+  gt=setInterval(()=>{if(gn>=18){clearInterval(gt);gend=setTimeout(()=>{if(!won){stopG();say("Yah, kelewat beberapa. Coba lagi ya, aku nunggu.")}},4800);return}spawn();gn++},650)});
+
+/* ---- Angka-angka: hitung naik + detik live ---- */
+function countUp(el){const to=+el.dataset.to,t0=performance.now();
+  (function f(t){const p=Math.min((t-t0)/1400,1);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(t0)}
+const nums=$$("[data-to]");
+if("IntersectionObserver" in window){const co=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){countUp(x.target);co.unobserve(x.target)}}),{threshold:.6});nums.forEach(n=>co.observe(n))}
+else nums.forEach(n=>n.textContent=n.dataset.to);
+let secs=0;const se=$("#secs");setInterval(()=>{if(!$("#site").hidden)se.textContent=++secs},1000);
+
+/* ---- Janji kecil ---- */
+const prs=$$(".pr");
+prs.forEach(b=>b.addEventListener("click",()=>{
+  b.classList.add("sealed");$("i",b).textContent="✓";const r=b.getBoundingClientRect();hearts(r.left+30,r.top+10,5);
+  if(prs.every(x=>x.classList.contains("sealed"))){const d=$("#promise-done");d.hidden=false;d.classList.add("pop");if(!reduce)hearts(innerWidth/2,innerHeight/2,16)}}));
+
+/* ---- Jejak hati di kursor + efek miring 3D ---- */
+let lastT=0;
+document.addEventListener("pointermove",e=>{
+  if(e.pointerType!=="mouse"||reduce||!document.body.classList.contains("in-site"))return;
+  const n=performance.now();if(n-lastT<70)return;lastT=n;
+  const h=document.createElement("span");h.className="t";h.textContent="♡";
+  h.style.cssText=`left:${e.clientX}px;top:${e.clientY}px;--dx:${Math.random()*30-15}px`;fx.appendChild(h);setTimeout(()=>h.remove(),900)});
+$$(".shot,.env").forEach(el=>{
+  el.addEventListener("pointermove",e=>{if(e.pointerType!=="mouse"||reduce)return;
+    const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    el.style.transition="transform .12s";el.style.transform=`perspective(600px) rotateY(${x*14}deg) rotateX(${-y*14}deg) scale(1.03)`});
+  el.addEventListener("pointerleave",()=>{el.style.transition="";el.style.transform=""})});
 })();
