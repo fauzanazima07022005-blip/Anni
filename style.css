@@ -1,4 +1,4 @@
-
+/* Orang Favoritku — ganti warna di :root & tema gelap */
 :root{
   --bg:#fff3ef; --surface:#fffaf7; --ink:#3b1f2f; --soft:#86616f;
   --rose:#d6456b; --rose-ink:#fff; --gold:#e9a45c; --line:rgba(59,31,47,.14);
@@ -309,3 +309,10 @@ h3{font-size:1.1rem}
 
 .petals span.bub{width:var(--s);height:var(--s);border-radius:50%;border:1px solid rgba(255,255,255,.35);color:transparent;opacity:.75;
   background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.4),transparent 60%);animation-duration:13s}
+
+/* ---- QR hati statis + galeri pakai grid (lebih aman di HP) ---- */
+.heartqr{padding:.6rem;border-radius:1.3rem}
+.heartqr img{display:block;width:min(20rem,78vw);height:auto;border-radius:.9rem}
+.heartqr::after{display:none}
+.grid{display:grid;columns:auto;grid-template-columns:repeat(auto-fill,minmax(9rem,1fr));gap:.7rem;align-items:start}
+.shot{margin-bottom:0;break-inside:auto}

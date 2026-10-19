@@ -110,14 +110,6 @@ flip.addEventListener("click",()=>{
   if(!flip.classList.contains("is-flipped")){fi=(fi+1)%FACTS.length;$("#flip-text").textContent=FACTS[fi]}
   flip.classList.toggle("is-flipped")});
 
-/* QR menuju halaman ini */
-const qc=$("#qr-canvas"), url=location.href.split("#")[0];
-if(window.QRCode&&QRCode.toCanvas&&/^https?:/.test(url)){
-  QRCode.toCanvas(qc,url,{width:260,margin:0,color:{dark:"#3b1f2f",light:"#ffffff"}},()=>{});
-}else{
-  const p=qc.parentElement;p.innerHTML='<p style="padding:1rem;color:#86616f;max-width:12rem">QR akan muncul setelah halaman ini dibuka lewat link online.</p>';
-}
-
 /* Penutup */
 const end=$(".end");let done=false;
 if("IntersectionObserver" in window)new IntersectionObserver(es=>es.forEach(x=>{
