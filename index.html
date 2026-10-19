@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Untuk Anieza ♡</title>
+<meta name="description" content="Hadiah kecil, ditulis pelan-pelan untuk kamu.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="glow" aria-hidden="true"></div>
+<div id="petals" class="petals" aria-hidden="true"></div>
+<div id="progress" class="progress" aria-hidden="true"></div>
+
+<section id="opening" class="overlay opening">
+  <div class="opening__text">
+    <div class="orb" aria-hidden="true">♡</div>
+    <p style="--i:0">Hai, <span class="who">Anieza</span>.</p>
+    <p style="--i:1">Ini bukan website biasa.</p>
+    <p style="--i:2">Aku bikin ini pelan-pelan, khusus buat kamu seorang.</p>
+    <button id="open-btn" class="btn" style="--i:3">Buka hadiahnya</button>
+  </div>
+  <button id="music-btn" class="pill music" aria-label="Putar atau matikan musik">♪</button>
+</section>
+
+<main id="site" hidden>
+  <nav class="nav" aria-label="Menu">
+    <a class="brand" href="#top"><i>♡</i>Untuk <span class="who">Anieza</span></a>
+    <ul>
+      <li><a href="#top">Beranda</a></li><li><a href="#gallery">Momen</a></li><li><a href="#why">Alasan</a></li>
+      <li><a href="#hug">Peluk</a></li><li><a href="#letter">Surat</a></li><li><a href="#wa">Chat</a></li>
+    </ul>
+    <button id="theme-btn" class="pill" aria-label="Ganti tema terang atau gelap">☾</button>
+  </nav>
+  <div class="sea" aria-hidden="true">
+    <svg viewBox="0 0 2880 120" preserveAspectRatio="none"><path d="M0 60C240 100 480 20 720 60S1200 100 1440 60 1920 20 2160 60 2640 100 2880 60V120H0Z"/></svg>
+    <svg viewBox="0 0 2880 120" preserveAspectRatio="none"><path d="M0 70C300 30 420 110 720 70S1140 30 1440 70 1860 110 2160 70 2580 30 2880 70V120H0Z"/></svg>
+  </div>
+  <aside class="depth" aria-hidden="true">
+    <span class="depth__label">kedalaman</span>
+    <div class="depth__line"><i id="depth-fill"></i></div>
+    <span id="depth-num">0 m</span>
+  </aside>
+
+  <header class="hero" id="top">
+    <p class="small">pesan kecil yang hanyut sampai ke kamu</p>
+    <h1>Anieza, kamu itu<br><em>orang favoritku.</em></h1>
+    <p class="lead">Nie, kalau kamu lagi baca ini, berarti kamu salah satu alasan kenapa kuliahku terasa lebih hangat.</p>
+    <div class="cta"><a class="btn" href="#gallery">Mulai menyelam ↓</a><a class="btn ghost" href="#letter">Langsung ke surat</a></div>
+    <figure class="arch"><img src="assets/images/gg.jpeg" alt="Foto kamu"></figure>
+    <p class="cue">gulir pelan-pelan ya ↓</p>
+  </header>
+
+  <div class="marquee" aria-hidden="true"><div>
+    <span>kamu bikin hariku hangat ♡ senyummu favoritku ♡ jangan lupa makan ♡ aku selalu doain kamu ♡ </span>
+    <span>kamu bikin hariku hangat ♡ senyummu favoritku ♡ jangan lupa makan ♡ aku selalu doain kamu ♡ </span>
+  </div></div>
+
+  <section class="sec" id="gallery">
+    <h2>Potongan kecil yang kusimpan</h2>
+    <p class="lead">Sebentar saja, tapi bikin aku senyum terus.</p>
+    <div class="grid">
+      <button class="shot" data-cap="Yang ini selalu bikin aku senyum sendiri."><img src="assets/images/A.jpeg" alt="Momen 1"></button>
+      <button class="shot" data-cap="Hari biasa, tapi jadi spesial karena ada kamu."><img src="assets/images/N.jpeg" alt="Momen 2"></button>
+      <button class="shot" data-cap="Pengen simpan yang ini lama-lama."><img src="assets/images/I.jpeg" alt="Momen 3"></button>
+      <button class="shot" data-cap="Kecil banget, tapi artinya besar buatku."><img src="assets/images/E.jpeg" alt="Momen 4"></button>
+      <button class="shot" data-cap="Aku nggak pernah bosan lihat ini."><img src="assets/images/Z.jpeg" alt="Momen 5"></button>
+      <button class="shot" data-cap="Ini salah satu favoritku."><img src="assets/images/A..jpeg" alt="Momen 6"></button>
+    </div>
+  </section>
+
+  <div id="lightbox" class="lightbox" hidden>
+    <button id="lb-close" class="pill" aria-label="Tutup">✕</button>
+    <figure><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
+  </div>
+
+  <section class="sec" id="why">
+    <h2>Kenapa kamu bikin aku betah</h2>
+    <ul class="reasons">
+      <li><h3>Senyummu</h3><p>Entah kenapa, setelah lihat kamu senyum, hariku langsung terasa lebih ringan.</p></li>
+      <li><h3>Hatimu yang baik</h3><p>Kamu mungkin nggak sadar, tapi hal-hal kecil yang kamu lakukan itu berarti banget.</p></li>
+      <li><h3>Caramu hadir</h3><p>Ada kamu di dekatku saja sudah bikin tenang. Itu bukan hal kecil.</p></li>
+      <li><h3>Kamu apa adanya</h3><p>Kamu nggak perlu jadi siapa-siapa. Yang sekarang ini sudah paling aku suka.</p></li>
+    </ul>
+  </section>
+
+  <section class="sec center" id="boost">
+    <h2>Lagi capek?</h2>
+    <p class="lead">Pencet tombolnya. Aku titip beberapa kata buat kamu.</p>
+    <p id="boost-text" class="quote">Kamu sudah hebat, bahkan di hari yang berat.</p>
+    <button id="boost-btn" class="btn">Peluk lewat kata</button>
+  </section>
+
+  <section class="sec center" id="hug">
+    <h2>Boleh aku peluk kamu?</h2>
+    <p class="lead">Tahan tombol di bawah sebentar. Pelukannya tetap sampai, walau kita lagi jauh.</p>
+    <div class="hugwrap" id="hugwrap">
+      <svg class="ring" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="54" class="ring__bg"/><circle cx="60" cy="60" r="54" class="ring__fg" pathLength="100"/></svg>
+      <button id="hug-btn" class="hugbtn" aria-label="Tahan untuk peluk"><span>🤗</span></button>
+    </div>
+    <p id="hug-text" class="hugtext" aria-live="polite">Tahan sebentar ya...</p>
+    <a id="hug-reply" class="btn wa" hidden target="_blank" rel="noopener">Balas pelukannya di WhatsApp</a>
+  </section>
+
+  <section class="sec center" id="letter">
+    <h2>Ada surat buat kamu</h2>
+    <button id="seal" class="seal" aria-expanded="false" aria-controls="paper">
+      <span class="seal__heart">♡</span><span class="seal__hint">ketuk untuk buka</span>
+    </button>
+    <div id="paper" class="paper" hidden><p id="letter-text"></p></div>
+  </section>
+
+  <section class="sec" id="timeline">
+    <h2>Cerita kita, sejauh ini</h2>
+    <ol class="tl">
+      <li><h3>Awal ketemu</h3><p>Waktu itu aku belum tahu, kamu bakal jadi orang yang sering kupikirkan.</p></li>
+      <li><h3>Yang paling kuingat</h3><p>Sampai sekarang, kalau keinget, aku masih senyum-senyum sendiri.</p></li>
+      <li><h3>Yang bikin ketawa</h3><p>Kejadian konyol yang nggak akan kulupa. Kamu pasti tahu yang mana.</p></li>
+      <li><h3>Hari ini</h3><p>Dan ceritanya belum selesai. Aku masih mau lanjut bareng kamu.</p></li>
+    </ol>
+  </section>
+
+  <section class="sec center" id="fact">
+    <h2>Satu rahasia kecil</h2>
+    <button id="flip" class="flip" aria-label="Ketuk untuk membuka rahasia">
+      <span class="flip__in">
+        <span class="flip__f">Ketuk, ada yang mau kubisikkan</span>
+        <span class="flip__b" id="flip-text"></span>
+      </span>
+    </button>
+  </section>
+
+  <section class="sec center" id="qr">
+    <h2>Mau buka lagi nanti?</h2>
+    <p class="lead">Scan hati ini, hadiahnya ikut ke HP kamu.</p>
+    <div class="heartqr"><canvas id="qr-canvas" width="260" height="260"></canvas></div>
+  </section>
+
+  <section class="sec center" id="wa">
+    <h2>Mau bales? Aku tunggu ya</h2>
+    <p class="lead">Satu pesan singkat dari kamu bisa bikin hariku lengkap.</p>
+    <a id="wa-main" class="btn wa" target="_blank" rel="noopener">Chat aku di WhatsApp</a>
+  </section>
+
+  <footer class="sec center end">
+    <p class="small">satu hal lagi</p>
+    <h2 class="big">Makasih sudah ada, Anieza.</h2>
+    <p class="lead">Kamu orang favorit seseorang. Dan orang itu aku. ♡</p>
+    <a class="btn ghost" href="#">Kembali ke atas</a>
+    <div id="rise" class="rise" aria-hidden="true"></div>
+  </footer>
+  <a id="wa-float" class="wafloat" target="_blank" rel="noopener" aria-label="Chat aku lewat WhatsApp">💬</a>
+</main>
+
+<div id="warm" class="warm" aria-hidden="true"></div>
+<div id="fx" class="fx" aria-hidden="true"></div>
+<audio id="audio" loop preload="none"><source src="assets/audio/song.mp3" type="audio/mpeg"></audio>
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
