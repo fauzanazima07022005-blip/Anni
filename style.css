@@ -555,3 +555,19 @@ html body .reasons li p{margin:0}
 html body .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem 1.2rem;width:100%;padding:.8rem}
 @media(max-width:560px){html body .grid{grid-template-columns:repeat(2,1fr);gap:1.4rem .9rem}}
 html body .shot,html body .shot:nth-child(n){width:100%;max-width:none}
+
+/* ===== PERBAIKAN SEJAJAR + FOTO LEBIH BESAR: tempel di PALING BAWAH style.css ===== */
+/* semua kotak bagian: lurus di tengah (nggak geser kiri-kanan), dan semuanya punya kotak bening yang sama */
+html body .sec{
+  margin-left:auto!important;margin-right:auto!important;left:auto!important;right:auto!important;
+  transform:none!important;translate:none!important;rotate:none!important;float:none!important;
+  justify-self:center!important;align-self:center!important;
+  background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.015))!important;
+  border:1px solid rgba(255,255,255,.14)!important;border-radius:1.8rem!important;
+  -webkit-backdrop-filter:blur(10px) saturate(1.3)!important;backdrop-filter:blur(10px) saturate(1.3)!important;
+  box-shadow:0 20px 50px -30px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.12)!important}
+html[data-theme="light"] body .sec{background:linear-gradient(145deg,rgba(255,255,255,.5),rgba(255,255,255,.18))!important;border-color:rgba(255,255,255,.75)!important}
+
+/* foto 1-6: sedikit lebih besar (sekitar sepertiga) */
+html body .shot,html body .shot:nth-child(n){width:min(14rem,44%)!important}
+@media(max-width:560px){html body .shot,html body .shot:nth-child(n){width:46%!important}}
