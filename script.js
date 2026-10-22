@@ -19,12 +19,20 @@ document.addEventListener("pointerdown",e=>{if(!e.target.closest("input,.hugbtn"
 
 /* Musik (tidak autoplay) */
 const audio=$("#audio"), mb=$("#music-btn");
-if(mb)mb.addEventListener("click",()=>{if(!audio.paused){audio.pause();mb.textContent="♪";return}
-  audio.play().then(()=>mb.textContent="❚❚").catch(()=>{})});
+const mf=$("#music-float");
+audio.volume=.6;
+function setMusic(on){[mb,mf].forEach(b=>{if(b)b.textContent=on?"❚❚":"♪"});if(mf)mf.classList.toggle("on",on)}
+function playMusic(){return audio.play().then(()=>setMusic(true)).catch(()=>{})}
+function toggleMusic(){if(!audio.paused){audio.pause();setMusic(false)}else playMusic()}
+if(mb)mb.addEventListener("click",toggleMusic);
+if(mf)mf.addEventListener("click",toggleMusic);
+const asrc=$("#audio source");
+if(asrc)asrc.addEventListener("error",()=>{if(mf)mf.hidden=true;if(mb)mb.hidden=true});
 
 /* Buka hadiah */
 $("#open-btn").addEventListener("click",()=>{
   hearts(innerWidth/2,innerHeight/2,12);
+  playMusic();
   const o=$("#opening");hide(o);
   $("#site").hidden=false;document.body.classList.add("in-site");scrollTo(0,0);reveal();
 });
