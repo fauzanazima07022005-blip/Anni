@@ -607,3 +607,4 @@ html body .marquee{
   mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)!important}
 html body .marquee span{color:#fff!important;font-size:1.05rem!important;font-style:italic;letter-spacing:.02em;text-shadow:0 1px 10px rgba(120,60,200,.6)!important}
 html[data-theme="light"] body .marquee span{color:#5b2a6e!important;text-shadow:none!important}
+html body .marquee{transform:none!important;rotate:none!important}
