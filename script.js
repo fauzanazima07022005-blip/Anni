@@ -94,6 +94,9 @@ Nggak harus selalu sempurna.
 Capek ya istirahat.
 Siap ya jalan lagi.
 
+Lekas sembuh ya adekkuu.
+Lain kali hati hati bawa motornya.
+
 Apa pun yang sedang kamu hadapi sekarang, semoga selalu ada alasan kecil buat kamu tersenyum.
 Dan kalau belum ketemu, kamu boleh pakai aku.
 
