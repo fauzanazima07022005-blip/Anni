@@ -4,20 +4,17 @@ const $=(s,c)=>(c||document).querySelector(s), $$=(s,c)=>[...(c||document).query
 const store={get(k){try{return localStorage.getItem(k)||""}catch(e){return ""}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
 const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/* Nama penerima */
 const NAME="Anieza";
 $$(".who").forEach(e=>e.textContent=NAME);
 document.title=`Untuk ${NAME} ♡`;
 function hide(el){el.classList.add("is-hidden");setTimeout(()=>el.style.display="none",650)}
 
-/* Hati kecil yang melayang */
 const fx=$("#fx");
 function hearts(x,y,n){for(let i=0;i<n;i++){const h=document.createElement("span");h.textContent="♡";
   h.style.cssText=`left:${x+(Math.random()*60-30)}px;top:${y}px;font-size:${1+Math.random()*1.2}rem;--dx:${Math.random()*80-40}px`;
   fx.appendChild(h);setTimeout(()=>h.remove(),1000)}}
 document.addEventListener("pointerdown",e=>{if(!e.target.closest("input,.hugbtn")&&!reduce)hearts(e.clientX,e.clientY,1)});
 
-/* Musik (tidak autoplay) */
 const audio=$("#audio"), mb=$("#music-btn");
 const mf=$("#music-float");
 audio.volume=.6;
@@ -29,7 +26,6 @@ if(mf)mf.addEventListener("click",toggleMusic);
 const asrc=$("#audio source");
 if(asrc)asrc.addEventListener("error",()=>{if(mf)mf.hidden=true;if(mb)mb.hidden=true});
 
-/* Buka hadiah */
 $("#open-btn").addEventListener("click",()=>{
   hearts(innerWidth/2,innerHeight/2,12);
   playMusic();
@@ -37,7 +33,6 @@ $("#open-btn").addEventListener("click",()=>{
   $("#site").hidden=false;document.body.classList.add("in-site");scrollTo(0,0);reveal();
 });
 
-/* Tema */
 const tb=$("#theme-btn"), root=document.documentElement;
 function theme(t){root.setAttribute("data-theme",t);tb.textContent=t==="dark"?"☀":"☾"}
 theme(store.get("ofp_theme")||"dark");
@@ -45,7 +40,6 @@ tb.addEventListener("click",()=>{
   const cur=root.getAttribute("data-theme")||"dark";
   const n=cur==="dark"?"light":"dark";theme(n);store.set("ofp_theme",n)});
 
-/* Muncul pelan saat digulir */
 function reveal(){
   const t=$$(".sec h2,.reasons li,.tl li,.shot");
   t.forEach(e=>e.classList.add("rv"));
@@ -54,7 +48,6 @@ function reveal(){
   t.forEach(e=>io.observe(e));
 }
 
-/* Foto besar */
 const lb=$("#lightbox");
 $$(".shot").forEach(s=>s.addEventListener("click",()=>{const i=$("img",s);
   $("#lb-img").src=i.src;$("#lb-img").alt=i.alt;$("#lb-cap").textContent=s.dataset.cap||"";
@@ -64,7 +57,6 @@ $("#lb-close").addEventListener("click",closeLb);
 lb.addEventListener("click",e=>{if(e.target===lb)closeLb()});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!lb.hidden)closeLb()});
 
-/* Kata penyemangat */
 const WORDS=[
  "Anieza, kamu sudah hebat, bahkan di hari yang berat.",
  "Pelan-pelan juga nggak apa-apa. Yang penting kamu tetap jalan.",
@@ -80,7 +72,6 @@ $("#boost-btn").addEventListener("click",e=>{
     bt.textContent=WORDS[i];bt.classList.remove("swap")},250);
   const r=e.currentTarget.getBoundingClientRect();hearts(r.left+r.width/2,r.top,6)});
 
-/* Surat */
 const LETTER=`Hai, Anieza.
 
 Aku cuma mau bilang satu hal.
@@ -113,7 +104,6 @@ seal.addEventListener("click",()=>{
   let i=0;(function step(){lt.textContent=LETTER.slice(0,i);i+=2;if(i<=LETTER.length+1)setTimeout(step,22)})();
 });
 
-/* Rahasia kecil */
 const FACTS=[
  "Ada seseorang yang diam-diam senang karena kamu ada.",
  "Kamu pernah bikin aku senyum, dan kamu sama sekali nggak sadar.",
@@ -125,7 +115,6 @@ flip.addEventListener("click",()=>{
   if(!flip.classList.contains("is-flipped")){fi=(fi+1)%FACTS.length;$("#flip-text").textContent=FACTS[fi]}
   flip.classList.toggle("is-flipped")});
 
-/* Penutup */
 const end=$(".end");let done=false;
 if("IntersectionObserver" in window)new IntersectionObserver(es=>es.forEach(x=>{
   if(x.isIntersecting&&!done&&!reduce){done=true;const r=$("#rise");
@@ -134,13 +123,11 @@ if("IntersectionObserver" in window)new IntersectionObserver(es=>es.forEach(x=>{
       r.appendChild(h);setTimeout(()=>h.remove(),6200)},i*180)}
 }),{threshold:.4}).observe(end);
 
-/* ---- Nomor WhatsApp: ganti angka di bawah (format 62, tanpa 0 / + / spasi) ---- */
 const WA_NUMBER="6282281276704";
 const waLink=m=>`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(m)}`;
 $("#wa-main").href=waLink(`Hai, ini ${NAME}. Aku udah buka hadiahmu, dan aku senyum-senyum sendiri. ♡`);
 $("#wa-float").href=waLink(`Hai, ini ${NAME}. Aku mau cerita sesuatu ke kamu. ♡`);
 
-/* ---- Bar progres + kelopak hati ambient ---- */
 const prog=$("#progress");
 addEventListener("scroll",()=>{const m=document.documentElement.scrollHeight-innerHeight;
   prog.style.transform=`scaleX(${m>0?Math.min(scrollY/m,1):0})`},{passive:true});
@@ -149,10 +136,8 @@ if(!reduce)setInterval(()=>{const p=document.createElement("span");p.textContent
   p.style.cssText=`left:${Math.random()*100}%;font-size:${.8+Math.random()*1.3}rem;--dx:${Math.random()*120-60}px`;
   petals.appendChild(p);setTimeout(()=>p.remove(),15500)},2200);
 
-/* ---- Peluk virtual: tahan tombol ---- */
 const hw=$("#hugwrap"), hb=$("#hug-btn"), ht=$("#hug-text"), hr=$("#hug-reply"), warm=$("#warm");
-const HUG_MSG=["Pelukan sampai, Anieza. Eraaat banget. 🤗","Nah, udah kupeluk. Hangat kan? Jangan dilepas dulu.","Peluk lagi satu, buat semua hal yang bikin kamu capek hari ini."];
-let timer=null, hugs=0;
+const HUG_MSG=["Pelukannya sampai dengan selamat. Hangatnya sengaja aku kasih lebih 🤗","Peluk lagi ya dek. Habisnya kalau udah meluk kamu, aku jadi lupa lepasinnya.","Udah ah dek, nanti aku kebiasaan. Eh tapi sebentar lagi deh, satu lagi aja 🤍"];
 function burst(){const r=hw.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;
   for(let i=0;i<30;i++){const h=document.createElement("span"),a=Math.random()*Math.PI*2,d=90+Math.random()*190;
     h.className="b";h.textContent=["♡","♥","✿","✦"][i%4];
