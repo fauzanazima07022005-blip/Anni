@@ -169,7 +169,7 @@ hb.addEventListener("contextmenu",e=>e.preventDefault());
 
 const df=$("#depth-fill"), dn=$("#depth-num");
 function depth(){const m=document.documentElement.scrollHeight-innerHeight,p=m>0?Math.min(scrollY/m,1):0;
-  df.style.transform=`scaleY(${p})`;dn.textContent=Math.round(p*40)+" m"}
+  df.style.transform=`scaleY(${p})`;dn.textContent=Math.round(p*40)+" m";root.style.setProperty("--p",p.toFixed(3))}
 addEventListener("scroll",depth,{passive:true});
 const links=$$(".nav ul a");
 if("IntersectionObserver" in window){const so=new IntersectionObserver(es=>es.forEach(x=>{
@@ -234,4 +234,7 @@ $$(".shot,.env").forEach(el=>{
     const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
     el.style.transition="transform .12s";el.style.transform=`perspective(600px) rotateY(${x*14}deg) rotateX(${-y*14}deg) scale(1.03)`});
   el.addEventListener("pointerleave",()=>{el.style.transition="";el.style.transform=""})});
+
+/* tambahan: cahaya lembut mengikuti jari / kursor */
+addEventListener("pointermove",e=>{root.style.setProperty("--mx",e.clientX+"px");root.style.setProperty("--my",e.clientY+"px")},{passive:true});
 })();
