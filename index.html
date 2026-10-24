@@ -213,5 +213,12 @@
 <div id="fx" class="fx" aria-hidden="true"></div>
 <audio id="audio" loop preload="none"><source src="audio/song.mp3" type="audio/mpeg"></audio>
 <script src="script.js"></script>
+  <script>
+document.querySelectorAll(".marquee").forEach(function(m){
+  ["transform","rotate","translate"].forEach(function(p){
+    m.style.setProperty(p,"none","important");
+  });
+});
+</script>
 </body>
 </html>
