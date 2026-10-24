@@ -188,7 +188,6 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
   background:#25d366;display:grid;place-items:center;font-size:1.5rem;text-decoration:none;box-shadow:0 10px 24px -8px #25d366;animation:bob 3s ease-in-out infinite}
 .wafloat::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25d366;animation:ripple 2s infinite}
 
-/* ---- background transparan (kaca) ---- */
 :root{--glass:rgba(255,255,255,.4);--glass-hi:rgba(255,255,255,.7);--glass-line:rgba(255,255,255,.65);--veil:rgba(255,243,239,.5);--shadow-g:0 30px 60px -30px rgba(150,50,90,.35)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--glass:rgba(255,255,255,.06);--glass-hi:rgba(255,255,255,.1);--glass-line:rgba(255,255,255,.14);--veil:rgba(28,16,24,.5);--shadow-g:0 30px 60px -30px rgba(0,0,0,.6)}}
 :root[data-theme="dark"]{--glass:rgba(255,255,255,.06);--glass-hi:rgba(255,255,255,.1);--glass-line:rgba(255,255,255,.14);--veil:rgba(28,16,24,.5);--shadow-g:0 30px 60px -30px rgba(0,0,0,.6)}
@@ -203,7 +202,6 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 .gate input,.shot{background:var(--glass)}
 .shot{box-shadow:0 0 0 1px var(--glass-line),0 20px 40px -24px rgba(120,40,70,.45)}
 
-/* ---- kursor hati setelah masuk web ---- */
 body.in-site,body.in-site *{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Cpath fill='%23ff5c8a' stroke='white' stroke-width='1.3' d='M12 21C5 16.5 2 12.8 2 9.2 2 6.4 4.1 4.5 6.6 4.5c1.9 0 3.7 1 5.4 3 1.7-2 3.5-3 5.4-3C19.9 4.5 22 6.4 22 9.2c0 3.6-3 7.3-10 11.8z'/%3E%3C/svg%3E") 16 16,auto}
 body.in-site :is(button,a,.shot,.seal,.hugbtn,.flip){cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 24 24'%3E%3Cpath fill='%23ff3d73' stroke='white' stroke-width='1.3' d='M12 21C5 16.5 2 12.8 2 9.2 2 6.4 4.1 4.5 6.6 4.5c1.9 0 3.7 1 5.4 3 1.7-2 3.5-3 5.4-3C19.9 4.5 22 6.4 22 9.2c0 3.6-3 7.3-10 11.8z'/%3E%3C/svg%3E") 22 22,pointer}
 body.in-site input{cursor:text}
@@ -263,7 +261,6 @@ h3{font-size:1.1rem}
 .wafloat{width:3rem;height:3rem;font-size:1.3rem}
 .marquee span{font-size:1.05rem}
 
-/* ---- tema laut ungu (tambahan; tema terang masih ada lewat tombol ☾/☀) ---- */
 :root:not([data-theme="light"]){
   --bg:#120826;--surface:#1d1040;--ink:#f4eeff;--soft:#b8a8dc;--rose:#9a6dfb;--rose-ink:#fff;--gold:#ffd36e;
   --line:rgba(190,170,255,.2);--glow1:rgba(125,80,255,.5);--glow2:rgba(40,110,255,.32);
@@ -309,7 +306,6 @@ h3{font-size:1.1rem}
 .petals span.bub{width:var(--s);height:var(--s);border-radius:50%;border:1px solid rgba(255,255,255,.35);color:transparent;opacity:.75;
   background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.4),transparent 60%);animation-duration:13s}
 
-/* ---- QR hati statis + galeri pakai grid (lebih aman di HP) ---- */
 .heartqr{padding:.6rem;border-radius:1.3rem}
 .heartqr img{display:block;width:min(20rem,78vw);height:auto;border-radius:.9rem}
 .heartqr::after{display:none}
@@ -317,14 +313,12 @@ h3{font-size:1.1rem}
 .shot{margin-bottom:0;break-inside:auto}
 .shot,.arch,.heartqr img{background:linear-gradient(135deg,var(--glass-hi),var(--glass))}
 
-/* ---- galeri rapi: semua foto sama ukuran, tanpa bingkai dalam ---- */
 .grid{grid-template-columns:repeat(3,1fr);gap:.8rem;align-items:stretch}
 @media(max-width:560px){.grid{grid-template-columns:repeat(2,1fr);gap:.6rem}}
 .shot,.shot:nth-child(3n+2){aspect-ratio:4/5;width:100%;padding:0;border:0;border-radius:1rem;overflow:hidden;line-height:0;display:block}
 .shot img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;display:block}
 .shot:nth-child(n):hover{transform:translateY(-4px)}
 
-/* ---- lebih kecil dan rapi: kolom dipersempit ---- */
 html{font-size:14px}
 .nav{width:min(48rem,calc(100% - 1.4rem))}
 .hero{max-width:44rem}
@@ -337,7 +331,6 @@ html{font-size:14px}
 .tl p,.reasons p{font-size:.92rem}
 .lead{font-size:.93rem}
 
-/* ---- tambahan: bintang, buka kalau, game, angka, janji ---- */
 @keyframes twinkle{from{opacity:.2}to{opacity:.9}}
 @keyframes drop{from{top:-2.5rem}to{top:15rem}}
 @keyframes fpop{to{transform:scale(2.2);opacity:0}}
@@ -372,34 +365,28 @@ html{font-size:14px}
 .pr.sealed{background:var(--glass-hi);box-shadow:0 0 0 1.5px var(--gold)}
 .pr.sealed i{background:var(--gold);color:#3a2300;box-shadow:none;transform:scale(1.15) rotate(360deg)}
 
-/* ---- variasi tata letak: tidak lurus ke bawah lagi ---- */
 #site{overflow-x:clip}
 .sec{position:relative}
 
-/* panel zig-zag kiri-kanan di layar lebar */
 @media(min-width:900px){
   section.sec:nth-of-type(odd){margin-left:calc(50% - 26rem);margin-right:auto}
   section.sec:nth-of-type(even){margin-left:calc(50% - 18rem);margin-right:auto}
 }
-/* bola cahaya yang mengintip dari pinggir panel */
 .sec::after{content:"";position:absolute;width:9rem;height:9rem;border-radius:50%;right:-2.5rem;top:-2.5rem;z-index:-1;pointer-events:none;
   background:radial-gradient(circle,var(--rose),transparent 70%);opacity:.4;filter:blur(8px)}
 section.sec:nth-of-type(even)::after{right:auto;left:-2.5rem;top:auto;bottom:-2.5rem;background:radial-gradient(circle,var(--gold),transparent 70%);opacity:.3}
 
-/* bagian terbuka tanpa kotak + hiasan besar */
 #boost,#stats,#fact{background:transparent;border-color:transparent;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
 #boost::after,#stats::after,#fact::after{display:none}
 #boost::before{content:"\201C";position:absolute;top:-2.5rem;left:50%;transform:translateX(-50%);font:600 13rem/1 var(--serif);color:var(--rose);opacity:.14;pointer-events:none}
 #hug{background:radial-gradient(circle at 50% 72%,rgba(154,109,251,.3),transparent 62%),var(--glass)}
 
-/* pita kata miring */
 .marquee.tilt{transform:rotate(-2deg);margin:2.2rem -2rem;width:calc(100% + 4rem);border:0;border-radius:0;
   background:linear-gradient(90deg,var(--rose),var(--gold));-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:0 12px 30px -14px rgba(0,0,0,.6)}
 .marquee.tilt span{color:#1a0a33;font-weight:600}
 .marquee.tilt.r{transform:rotate(1.6deg)}
 .marquee.tilt.r div{animation-direction:reverse}
 
-/* galeri jadi tumpukan foto polaroid */
 .grid{display:flex;flex-wrap:wrap;justify-content:center;gap:0;padding:.8rem 0}
 .grid .shot:nth-child(n){width:min(10.5rem,44%);aspect-ratio:auto;height:auto;padding:.45rem .45rem 2.2rem;margin:-.3rem .1rem;
   background:#fff;border-radius:.25rem;overflow:visible;line-height:1.2;position:relative;box-shadow:0 14px 28px -12px rgba(0,0,0,.6);transition:transform .35s}
@@ -414,13 +401,11 @@ section.sec:nth-of-type(even)::after{right:auto;left:-2.5rem;top:auto;bottom:-2.
 .grid .shot:nth-child(6){transform:rotate(2.5deg) translateY(.6rem)}
 .grid .shot:nth-child(n):hover{transform:rotate(0) scale(1.12);z-index:5}
 
-/* alasan: nomor besar samar + kartu naik turun */
 .reasons{counter-reset:r}
 .reasons li,.reasons li:last-child{counter-increment:r;position:relative;overflow:hidden}
 .reasons li::after{content:"0" counter(r);position:absolute;right:.6rem;top:-.3rem;font:600 3.2rem var(--serif);opacity:.1;pointer-events:none}
 @media(min-width:600px){.reasons li:nth-child(even){margin-top:1.2rem}}
 
-/* timeline berkelok kiri-kanan di layar lebar */
 @media(min-width:700px){
   .tl{border:0;padding:0;position:relative;gap:1.5rem}
   .tl::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;transform:translateX(-50%);background:linear-gradient(var(--rose),var(--gold))}
@@ -430,7 +415,6 @@ section.sec:nth-of-type(even)::after{right:auto;left:-2.5rem;top:auto;bottom:-2.
   .tl li:nth-child(even)::before{right:auto;left:-7px}
 }
 
-/* ---- tanpa kotak kaku: bagian transparan, foto jadi polaroid ---- */
 .sec{position:relative;isolation:isolate;background:transparent;border:0;box-shadow:none;border-radius:0;
   -webkit-backdrop-filter:none;backdrop-filter:none;padding:3.2rem 1.2rem;margin:0 auto}
 .sec::before{content:"";position:absolute;z-index:-1;pointer-events:none;width:22rem;height:22rem;top:50%;left:-6rem;transform:translateY(-50%);
@@ -443,7 +427,6 @@ section.sec:nth-of-type(even)::after{right:auto;left:-2.5rem;top:auto;bottom:-2.
 .env,.stats div,.pr,.arena{background:rgba(255,255,255,.03);border:1px solid rgba(190,170,255,.14);border-radius:1.6rem;box-shadow:none}
 .paper{background:rgba(255,255,255,.05);border:1px dashed var(--glass-line);border-radius:1.4rem;box-shadow:none}
 
-/* foto: bingkai polaroid miring + selotip */
 .grid{gap:1.5rem .9rem;padding:.7rem}
 .shot,.shot:nth-child(3n+2){position:relative;aspect-ratio:auto;height:auto;padding:.5rem .5rem 0;background:#fffaf5;border-radius:.35rem;
   overflow:visible;line-height:normal;box-shadow:0 14px 26px -14px rgba(0,0,0,.65);transform:rotate(var(--r,0deg));transition:transform .35s,box-shadow .35s}
@@ -457,10 +440,8 @@ section.sec:nth-of-type(even)::after{right:auto;left:-2.5rem;top:auto;bottom:-2.
 .shot:nth-child(n):hover{transform:rotate(0deg) translateY(-6px) scale(1.04);z-index:2;box-shadow:0 22px 34px -14px rgba(0,0,0,.7)}
 .lightbox img{border:10px solid #fffaf5;border-bottom-width:30px;border-radius:.3rem}
 
-/* foto utama: bingkai emas berlapis */
 .arch{box-shadow:0 0 0 5px rgba(255,255,255,.08),0 0 0 6px var(--gold),0 0 0 14px rgba(255,211,110,.12),0 30px 60px -25px #000}
 
-/* ===== TAMBAHAN RAPI: tempel di PALING BAWAH style.css ===== */
 html{font-size:16px}
 html body{font-size:1rem;line-height:1.75}
 html body h1{font-size:clamp(2.3rem,7vw,3.6rem)}
@@ -470,7 +451,6 @@ html body .lead{font-size:1.05rem;max-width:32rem;margin-inline:auto}
 html body .small{font-size:.9rem}
 html body .hero .small{font-size:.78rem}
 
-/* semua bagian rata tengah, lebar sama, jarak sama */
 html body .sec{width:min(44rem,calc(100% - 2rem));padding:4rem 1.2rem;gap:1.1rem;text-align:center;justify-items:center}
 html body .sec h2::before,html body .sec h2::after{margin-inline:auto}
 html body .hero{max-width:44rem;gap:1.1rem;padding:6.5rem 1.2rem 3rem}
@@ -478,7 +458,6 @@ html body .reasons,html body .tl,html body .promise,html body .paper{width:100%;
 html body .paper{max-width:32rem}
 html body .paper p{font-size:1.1rem}
 
-/* nav, tombol, kartu */
 html body .nav{width:min(52rem,calc(100% - 1.4rem))}
 html body .nav ul a{font-size:.88rem}
 html body .brand{font-size:1.05rem}
@@ -497,7 +476,6 @@ html body .flip__f,html body .flip__b{font-size:1.15rem}
 html body .when__msg{font-size:1.15rem}
 html body .score{font-size:.95rem}
 
-/* foto rapi: grid seragam, polaroid sama besar */
 html body .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem 1rem;width:100%;padding:.6rem}
 @media(max-width:560px){html body .grid{grid-template-columns:repeat(2,1fr);gap:1.3rem .8rem}}
 html body .shot::after{font-size:.85rem}
@@ -506,8 +484,6 @@ html body .arch{width:min(12rem,55vw)}
 html body .marquee span{font-size:1.15rem}
 html body .wafloat{width:3.4rem;height:3.4rem;font-size:1.5rem}
 
-/* ===== KOTAK TRANSPARAN + BINGKAI FOTO: tempel di PALING BAWAH style.css ===== */
-/* kotak bagian: balik lagi, tapi bening */
 html body .sec{background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.015));border:1px solid rgba(255,255,255,.14);border-radius:1.8rem;
   -webkit-backdrop-filter:blur(10px) saturate(1.3);backdrop-filter:blur(10px) saturate(1.3);
   box-shadow:0 20px 50px -30px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.12);margin:1.2rem auto}
@@ -515,12 +491,10 @@ html[data-theme="light"] body .sec{background:linear-gradient(145deg,rgba(255,25
   box-shadow:0 20px 50px -30px rgba(150,50,90,.35),inset 0 1px 0 rgba(255,255,255,.8)}
 html body .marquee{background:rgba(255,255,255,.04);border-block:1px solid rgba(255,255,255,.12);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 
-/* kotak kecil di dalamnya: bening juga */
 html body .reasons li,html body .reasons li:last-child{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.13);border-radius:1.2rem;padding:1.1rem 1.2rem}
 html body .env,html body .stats div,html body .pr,html body .arena{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.14);border-radius:1.2rem}
 html body .paper{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:1.4rem}
 
-/* bingkai foto: emas berlapis + lencana hati */
 html body .shot,html body .shot:nth-child(3n+2){position:relative;padding:.5rem;border:5px solid transparent;border-radius:1rem;overflow:visible;line-height:0;
   background:linear-gradient(rgba(26,10,52,.9),rgba(26,10,52,.9)) padding-box,linear-gradient(135deg,#fff1b8,#d9a441 30%,#fff6d4 50%,#b9822f 75%,#f5d27a) border-box;
   box-shadow:0 16px 30px -16px rgba(0,0,0,.7),0 0 0 1px rgba(255,211,110,.22);transform:rotate(var(--r,0deg))}
@@ -537,11 +511,8 @@ html body .grid{gap:1.8rem 1rem}
 html body .lightbox img{border:8px solid transparent;border-radius:1rem;
   background:linear-gradient(#1a0a33,#1a0a33) padding-box,linear-gradient(135deg,#fff1b8,#d9a441 30%,#fff6d4 50%,#b9822f 75%,#f5d27a) border-box}
 
-/* ===== RAPIKAN + FOTO LEBIH BESAR: tempel di PALING BAWAH style.css ===== */
-/* semua kotak sejajar di tengah, nggak geser kiri-kanan */
 html body .sec{width:min(50rem,calc(100% - 2rem));margin:1.2rem auto;transform:none;translate:none;rotate:none}
 
-/* kartu alasan: 2 kolom sama tinggi, tanpa naik-turun, nomor nggak nabrak judul */
 html body .reasons{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;width:100%;counter-reset:r}
 @media(max-width:600px){html body .reasons{grid-template-columns:1fr}}
 html body .reasons li,html body .reasons li:nth-child(n){counter-increment:r;position:relative;display:block;margin:0;transform:none;
@@ -550,13 +521,10 @@ html body .reasons li::after{content:"0" counter(r);position:absolute;right:.9re
 html body .reasons li h3{margin:0 0 .4rem;padding-right:3rem;font-size:1.15rem;line-height:1.25}
 html body .reasons li p{margin:0}
 
-/* foto lebih besar: 3 kolom di laptop, 2 di HP */
 html body .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem 1.2rem;width:100%;padding:.8rem}
 @media(max-width:560px){html body .grid{grid-template-columns:repeat(2,1fr);gap:1.4rem .9rem}}
 html body .shot,html body .shot:nth-child(n){width:100%;max-width:none}
 
-/* ===== PERBAIKAN SEJAJAR + FOTO LEBIH BESAR: tempel di PALING BAWAH style.css ===== */
-/* semua kotak bagian: lurus di tengah (nggak geser kiri-kanan), dan semuanya punya kotak bening yang sama */
 html body .sec{
   margin-left:auto!important;margin-right:auto!important;left:auto!important;right:auto!important;
   transform:none!important;translate:none!important;rotate:none!important;float:none!important;
@@ -567,17 +535,13 @@ html body .sec{
   box-shadow:0 20px 50px -30px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.12)!important}
 html[data-theme="light"] body .sec{background:linear-gradient(145deg,rgba(255,255,255,.5),rgba(255,255,255,.18))!important;border-color:rgba(255,255,255,.75)!important}
 
-/* foto 1-6: sedikit lebih besar (sekitar sepertiga) */
 html body .shot,html body .shot:nth-child(n){width:min(14rem,44%)!important}
 @media(max-width:560px){html body .shot,html body .shot:nth-child(n){width:46%!important}}
 
-/* ===== FOTO LEBIH BESAR + BINGKAI MANIS + KURSOR LOVE BARU: tempel di PALING BAWAH style.css ===== */
-/* ukuran foto: tadinya 44% dari kolom, sekarang pas dan lebih besar */
 html body .grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:2rem 1rem!important;justify-items:center}
 @media(max-width:560px){html body .grid{grid-template-columns:repeat(2,1fr)!important;gap:1.6rem .8rem!important}}
 html body .shot,html body .shot:nth-child(n){width:min(17rem,100%)!important;justify-self:center}
 
-/* bingkai manis: pink - lavender - krem, dengan garis putih halus dan lencana hati pink */
 html body .shot,html body .shot:nth-child(n){border:6px solid transparent!important;border-radius:1.4rem!important;
   background:linear-gradient(#fff8fc,#fff8fc) padding-box,linear-gradient(135deg,#ffb7d9,#d7b6ff 35%,#ffe3b0 60%,#ffb7d9) border-box!important;
   box-shadow:0 18px 34px -16px rgba(255,110,185,.6),0 0 26px rgba(205,160,255,.3)!important}
@@ -586,16 +550,13 @@ html body .shot::before{content:"♥"!important;top:-1.1rem;width:2rem;height:2r
   background:linear-gradient(135deg,#ffa6d0,#ff4f9a)!important;box-shadow:0 0 0 3px #fff8fc,0 6px 12px -4px rgba(255,80,160,.7)}
 html body .shot::after{color:#b24d86!important}
 
-/* kursor love baru: bentuk lebih bulat, pink bergradasi, ada kilau */
 html body.in-site,html body.in-site *{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ffa6d0'/%3E%3Cstop offset='1' stop-color='%23ff2f86'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z' fill='url(%23g)' stroke='%23fff' stroke-width='1.3' stroke-linejoin='round'/%3E%3Cellipse cx='8' cy='7.4' rx='2.4' ry='1.4' fill='%23fff' fill-opacity='.65' transform='rotate(-35 8 7.4)'/%3E%3C/svg%3E") 16 16,auto!important}
 html body.in-site :is(button,a,.shot,.seal,.hugbtn,.flip,.env,.pr,.fh){cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 24 24'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ffc2de'/%3E%3Cstop offset='1' stop-color='%23ff1f7a'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z' fill='url(%23g)' stroke='%23fff' stroke-width='1.3' stroke-linejoin='round'/%3E%3Cellipse cx='8' cy='7.4' rx='2.4' ry='1.4' fill='%23fff' fill-opacity='.65' transform='rotate(-35 8 7.4)'/%3E%3C/svg%3E") 22 22,pointer!important}
 html body.in-site input{cursor:text!important}
 
-/* ---- tombol musik melayang (kiri bawah) ---- */
 .musicfloat{position:fixed;left:calc(1rem + env(safe-area-inset-left,0px));bottom:calc(1rem + env(safe-area-inset-bottom,0px));z-index:30;width:3rem;height:3rem;font-size:1.1rem}
 .musicfloat.on{animation:beat 1.8s infinite;box-shadow:0 0 0 1px var(--rose),0 0 18px var(--rose)}
 
-/* ===== PITA KATA-KATA LEBIH BAGUS: tempel di PALING BAWAH style.css ===== */
 html body .marquee{
   transform:none!important;margin:2.2rem 0!important;padding:.75rem 0!important;
   background:linear-gradient(90deg,rgba(154,109,251,0),rgba(154,109,251,.3) 15%,rgba(255,170,215,.22) 50%,rgba(255,211,110,.3) 85%,rgba(255,211,110,0))!important;
@@ -607,7 +568,6 @@ html body .marquee{
 html body .marquee span{color:#fff!important;font-size:1.05rem!important;font-style:italic;letter-spacing:.02em;text-shadow:0 1px 10px rgba(120,60,200,.6)!important}
 html[data-theme="light"] body .marquee span{color:#5b2a6e!important;text-shadow:none!important}
 
-/* ===== LURUSKAN PITA (kuat): tempel di PALING BAWAH style.css ===== */
 html body main .marquee,
 html body main .marquee.tilt,
 html body main .marquee.tilt.r,
