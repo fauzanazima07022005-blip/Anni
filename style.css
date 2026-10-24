@@ -45,7 +45,7 @@ body {
   min-height: 100vh;
 }
 
-/* Background Animations */
+/* Background Effects */
 .glow {
   position: fixed;
   inset: -20%;
@@ -83,9 +83,7 @@ body {
 }
 
 @keyframes floatUp {
-  to {
-    transform: translateY(-115vh) translateX(var(--dx, 0)) rotate(60deg);
-  }
+  to { transform: translateY(-115vh) translateX(var(--dx, 0)) rotate(60deg); }
 }
 
 .progress {
@@ -100,18 +98,7 @@ body {
   transform-origin: 0 50%;
 }
 
-/* Typography & Keyframes */
-@keyframes up {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
+/* Typography */
 h1, h2, h3 {
   font-family: var(--serif);
   font-weight: 400;
@@ -158,7 +145,7 @@ h2 {
   margin: 0 auto;
 }
 
-/* Buttons & Pill Controls */
+/* Buttons & Pill */
 .btn {
   background: var(--pink-accent);
   color: #ffffff;
@@ -220,7 +207,7 @@ h2 {
   background: rgba(255, 255, 255, 0.15);
 }
 
-/* Header & Navbar */
+/* Navbar */
 .nav {
   position: fixed;
   top: 1rem;
@@ -273,7 +260,7 @@ h2 {
   .nav ul { display: none; }
 }
 
-/* Sea & Depth Meter */
+/* Sea & Depth */
 .sea {
   position: absolute;
   top: 0;
@@ -335,7 +322,7 @@ h2 {
 #depth-num { color: var(--gold); }
 @media(max-width: 768px) { .depth { display: none; } }
 
-/* Section Base */
+/* Sections */
 .sec {
   width: min(52rem, calc(100% - 2rem));
   margin: 3.5rem auto;
@@ -421,7 +408,7 @@ h2 {
   to { transform: translateX(-50%); }
 }
 
-/* Gallery Cards */
+/* Gallery */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -471,7 +458,7 @@ h2 {
   line-height: 1.4;
 }
 
-/* Lightbox Modal */
+/* Lightbox */
 .lightbox {
   position: fixed;
   inset: 0;
@@ -508,7 +495,7 @@ h2 {
   right: 1.5rem;
 }
 
-/* Reasons & When Section */
+/* Reasons & When */
 .reasons, .when {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -519,9 +506,7 @@ h2 {
 }
 
 @media(max-width: 600px) {
-  .reasons, .when {
-    grid-template-columns: 1fr;
-  }
+  .reasons, .when { grid-template-columns: 1fr; }
 }
 
 .reasons li, .env {
@@ -577,7 +562,7 @@ h2 {
   margin-top: 0.5rem;
 }
 
-/* Quote Boost */
+/* Quote */
 .quote {
   font-family: var(--serif);
   font-style: italic;
@@ -590,7 +575,7 @@ h2 {
 
 .quote.swap { opacity: 0; }
 
-/* Virtual Hug */
+/* Hug */
 .hugwrap {
   position: relative;
   width: 10rem;
@@ -652,7 +637,7 @@ h2 {
   max-width: 26rem;
 }
 
-/* Letter Seal */
+/* Letter */
 .seal {
   width: 7rem;
   height: 7rem;
@@ -728,7 +713,7 @@ h2 {
   color: var(--soft);
 }
 
-/* Flip Secret Note */
+/* Flip */
 .flip {
   width: min(18rem, 100%);
   aspect-ratio: 3/2;
@@ -775,7 +760,7 @@ h2 {
   transform: rotateY(180deg);
 }
 
-/* Mini Game */
+/* Game */
 .arena {
   position: relative;
   width: 100%;
@@ -893,7 +878,7 @@ h2 {
   border-color: var(--gold);
 }
 
-/* QR Code */
+/* QR */
 .heartqr {
   background: #ffffff;
   padding: 1rem;
@@ -909,7 +894,7 @@ h2 {
   border-radius: 0.8rem;
 }
 
-/* Overlay Entrance (Fixed visibility) */
+/* Opening Overlay Fix (Dijamin tidak blank) */
 .overlay {
   position: fixed;
   inset: 0;
@@ -936,12 +921,14 @@ h2 {
   max-width: 28rem;
 }
 
+/* MEMASTIKAN TEKS MUNCUL UTUH TANPA TRANSPARAN */
 .opening__text p {
   font-family: var(--serif);
   font-style: italic;
   font-size: clamp(1.3rem, 4.5vw, 1.8rem);
   color: #ffffff;
-  opacity: 1; /* Dipastikan langsung tampil */
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .orb {
