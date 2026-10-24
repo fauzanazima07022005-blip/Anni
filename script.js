@@ -94,8 +94,12 @@ Nggak harus selalu sempurna.
 Capek ya istirahat.
 Siap ya jalan lagi.
 
-Lekas sembuh ya adekkuu.
-Lain kali hati hati bawa motornya.
+Lekas sembuh ya, adekku.
+Lain kali hati-hati bawa motornya.
+Aku nggak mau kamu kenapa-kenapa.
+
+Kalau kuliah lagi bikin pusing, ingat ya, ada aku yang selalu nyemangatin kamu dari sini.
+Dan kalau capek, cerita aja. Aku dengerin.
 
 Apa pun yang sedang kamu hadapi sekarang, semoga selalu ada alasan kecil buat kamu tersenyum.
 Dan kalau belum ketemu, kamu boleh pakai aku.
