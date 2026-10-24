@@ -79,7 +79,7 @@ Aku cuma mau bilang satu hal.
 Kalau suatu hari semuanya terasa berat, ingat ya: kamu sudah berhasil melewati banyak hari yang sulit. Dan aku bangga sama kamu.
 
 Kamu nggak harus selalu kuat.
-Nggak harus selalu tersenyum.
+Nggak harus selalu tersenum.
 Nggak harus selalu sempurna.
 
 Capek ya istirahat.
@@ -137,6 +137,7 @@ if(!reduce)setInterval(()=>{const p=document.createElement("span");p.textContent
   petals.appendChild(p);setTimeout(()=>p.remove(),15500)},2200);
 
 const hw=$("#hugwrap"), hb=$("#hug-btn"), ht=$("#hug-text"), hr=$("#hug-reply"), warm=$("#warm");
+let hugs=0, timer=null;
 const HUG_MSG=["Pelukannya sampai dengan selamat. Hangatnya sengaja aku kasih lebih 🤗","Peluk lagi ya dek. Habisnya kalau udah meluk kamu, aku jadi lupa lepasinnya.","Udah ah dek, nanti aku kebiasaan. Eh tapi sebentar lagi deh, satu lagi aja 🤍"];
 function burst(){const r=hw.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;
   for(let i=0;i<30;i++){const h=document.createElement("span"),a=Math.random()*Math.PI*2,d=90+Math.random()*190;
@@ -171,15 +172,6 @@ const links=$$(".nav ul a");
 if("IntersectionObserver" in window){const so=new IntersectionObserver(es=>es.forEach(x=>{
   if(x.isIntersecting)links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+x.target.id))}),{rootMargin:"-45% 0px -50% 0px"});
   $$("#top,#gallery,#why,#hug,#letter,#wa").forEach(e=>so.observe(e))}
-if(!reduce)setInterval(()=>{const b=document.createElement("span"),z=6+Math.random()*16;b.className="bub";
-  b.style.cssText=`left:${Math.random()*100}%;--s:${z}px;--dx:${Math.random()*80-40}px`;
-  petals.appendChild(b);setTimeout(()=>b.remove(),15500)},1300);
-
-function fixImg(i){
-  if(i.dataset.r){i.style.opacity="0";return}
-  i.dataset.r="1";const u=i.src.split("?")[0];i.src=u+"?r="+Date.now()}
-$$("img").forEach(i=>{i.addEventListener("error",()=>fixImg(i));
-  if(i.complete&&i.naturalWidth===0&&i.src.indexOf("data:")!==0)fixImg(i)});
 
 const WHEN=["Nggak apa-apa nangis dulu. Habis itu cuci muka, minum air putih, terus ingat ya: kamu nggak sendirian. Ada aku yang peduli banget sama kamu.",
  "Taruh dulu semuanya. Kamu udah berusaha banyak hari ini. Istirahat ya, besok kita mulai pelan-pelan lagi.",
@@ -219,15 +211,4 @@ prs.forEach(b=>b.addEventListener("click",()=>{
   b.classList.add("sealed");$("i",b).textContent="✓";const r=b.getBoundingClientRect();hearts(r.left+30,r.top+10,5);
   if(prs.every(x=>x.classList.contains("sealed"))){const d=$("#promise-done");d.hidden=false;d.classList.add("pop");if(!reduce)hearts(innerWidth/2,innerHeight/2,16)}}));
 
-let lastT=0;
-document.addEventListener("pointermove",e=>{
-  if(e.pointerType!=="mouse"||reduce||!document.body.classList.contains("in-site"))return;
-  const n=performance.now();if(n-lastT<70)return;lastT=n;
-  const h=document.createElement("span");h.className="t";h.textContent="♡";
-  h.style.cssText=`left:${e.clientX}px;top:${e.clientY}px;--dx:${Math.random()*30-15}px`;fx.appendChild(h);setTimeout(()=>h.remove(),900)});
-$$(".shot,.env").forEach(el=>{
-  el.addEventListener("pointermove",e=>{if(e.pointerType!=="mouse"||reduce)return;
-    const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
-    el.style.transition="transform .12s";el.style.transform=`perspective(600px) rotateY(${x*14}deg) rotateX(${-y*14}deg) scale(1.03)`});
-  el.addEventListener("pointerleave",()=>{el.style.transition="";el.style.transform=""})});
 })();
