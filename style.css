@@ -612,3 +612,4 @@ html body main .marquee,
 html body main .marquee.tilt,
 html body main .marquee.tilt.r,
 html body main div.marquee{transform:none!important;rotate:none!important;translate:none!important}
+html body .marquee div{animation-duration:60s!important}
