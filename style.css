@@ -166,14 +166,14 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 .sec h2.rv{transform:translateX(-22px)}.sec h2.rv.in{transform:none}
 
 .hugwrap{position:relative;width:14rem;height:14rem;margin:1rem 0}
-.hugwrap::before{content:"";position:absolute;inset:1rem;border-radius:50%;background:var(--rose);opacity:.25;animation:ripple 2.4s infinite}
-.ring{position:absolute;inset:0;transform:rotate(-90deg)}
+.hugwrap::before{content:"";position:absolute;inset:1rem;border-radius:50%;background:var(--rose);opacity:.25;animation:ripple 2.4s infinite;pointer-events:none}
+.ring{position:absolute;inset:0;transform:rotate(-90deg);pointer-events:none}
 .ring__bg,.ring__fg{fill:none;stroke-width:4}
 .ring__bg{stroke:var(--line)}
 .ring__fg{stroke:var(--rose);stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:100;transition:stroke-dashoffset .35s}
 .holding .ring__fg{stroke-dashoffset:0;transition:stroke-dashoffset 1.6s linear}
 .hugged .ring__fg{stroke:var(--gold);stroke-dashoffset:0}
-.hugbtn{position:absolute;inset:1.1rem;border-radius:50%;background:var(--surface);box-shadow:0 0 0 1px var(--line),0 20px 40px -18px var(--rose);
+.hugbtn{position:absolute;inset:1.1rem;z-index:1;border-radius:50%;background:var(--surface);box-shadow:0 0 0 1px var(--line),0 20px 40px -18px var(--rose);
   font-size:4.4rem;display:grid;place-items:center;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;transition:transform .3s}
 .holding .hugbtn{transform:scale(.93)}
 .holding .hugbtn span{display:block;transform:scale(1.25);transition:transform 1.6s}

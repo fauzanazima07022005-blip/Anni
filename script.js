@@ -138,6 +138,7 @@ if(!reduce)setInterval(()=>{const p=document.createElement("span");p.textContent
 
 const hw=$("#hugwrap"), hb=$("#hug-btn"), ht=$("#hug-text"), hr=$("#hug-reply"), warm=$("#warm");
 const HUG_MSG=["Pelukannya sampai dengan selamat. Hangatnya sengaja aku kasih lebih 🤗","Peluk lagi ya dek. Habisnya kalau udah meluk kamu, aku jadi lupa lepasinnya.","Udah ah dek, nanti aku kebiasaan. Eh tapi sebentar lagi deh, satu lagi aja 🤍"];
+let timer=null,hugs=0;
 function burst(){const r=hw.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;
   for(let i=0;i<30;i++){const h=document.createElement("span"),a=Math.random()*Math.PI*2,d=90+Math.random()*190;
     h.className="b";h.textContent=["♡","♥","✿","✦"][i%4];
@@ -158,8 +159,11 @@ function hugStart(e){if(e&&e.type==="keydown"&&(e.repeat||!["Enter"," "].include
   ht.textContent="Tahan dek, pelukannya lagi dikirim, jangan dilepas dulu...";
   timer=setTimeout(()=>{timer=null;hugDone()},1600)}
 function hugStop(){if(timer){clearTimeout(timer);timer=null;hw.classList.remove("holding");ht.textContent="Yaah kelepasan dek, pelukannya jadi nyasar. Coba lagi ya!"}}
-hb.addEventListener("pointerdown",hugStart);
-["pointerup","pointerleave","pointercancel"].forEach(t=>hb.addEventListener(t,hugStop));
+hb.addEventListener("pointerdown",e=>{
+  hb.setPointerCapture(e.pointerId);
+  hugStart(e);
+});
+["pointerup","pointercancel","lostpointercapture"].forEach(t=>hb.addEventListener(t,hugStop));
 hb.addEventListener("keydown",hugStart);hb.addEventListener("keyup",hugStop);
 hb.addEventListener("contextmenu",e=>e.preventDefault());
 
