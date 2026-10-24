@@ -155,15 +155,14 @@ function hugDone(){
 function hugStart(e){if(e&&e.type==="keydown"&&(e.repeat||!["Enter"," "].includes(e.key)))return;
   if(e&&e.type==="keydown")e.preventDefault();
   if(timer)return;hw.classList.remove("hugged");hw.classList.add("holding");
-  ht.textContent="Terus ditahan ya... jangan dilepas dulu.";
+  ht.textContent="Tahan dek, pelukannya lagi dikirim, jangan dilepas dulu...";
   timer=setTimeout(()=>{timer=null;hugDone()},1600)}
-function hugStop(){if(timer){clearTimeout(timer);timer=null;hw.classList.remove("holding");ht.textContent="Yah, kelepasan. Coba tahan sedikit lebih lama ya."}}
+function hugStop(){if(timer){clearTimeout(timer);timer=null;hw.classList.remove("holding");ht.textContent="Yaah kelepasan dek, pelukannya jadi nyasar. Coba lagi ya!"}}
 hb.addEventListener("pointerdown",hugStart);
 ["pointerup","pointerleave","pointercancel"].forEach(t=>hb.addEventListener(t,hugStop));
 hb.addEventListener("keydown",hugStart);hb.addEventListener("keyup",hugStop);
 hb.addEventListener("contextmenu",e=>e.preventDefault());
 
-/* ---- meteran kedalaman, menu aktif, gelembung ---- */
 const df=$("#depth-fill"), dn=$("#depth-num");
 function depth(){const m=document.documentElement.scrollHeight-innerHeight,p=m>0?Math.min(scrollY/m,1):0;
   df.style.transform=`scaleY(${p})`;dn.textContent=Math.round(p*40)+" m"}
@@ -176,14 +175,12 @@ if(!reduce)setInterval(()=>{const b=document.createElement("span"),z=6+Math.rand
   b.style.cssText=`left:${Math.random()*100}%;--s:${z}px;--dx:${Math.random()*80-40}px`;
   petals.appendChild(b);setTimeout(()=>b.remove(),15500)},1300);
 
-/* ---- pengaman foto: coba lagi sekali, kalau tetap gagal sembunyikan ikon rusak ---- */
 function fixImg(i){
   if(i.dataset.r){i.style.opacity="0";return}
   i.dataset.r="1";const u=i.src.split("?")[0];i.src=u+"?r="+Date.now()}
 $$("img").forEach(i=>{i.addEventListener("error",()=>fixImg(i));
   if(i.complete&&i.naturalWidth===0&&i.src.indexOf("data:")!==0)fixImg(i)});
 
-/* ---- Buka kalau... ---- */
 const WHEN=["Nggak apa-apa nangis dulu. Habis itu cuci muka, minum air putih, terus ingat ya: kamu nggak sendirian. Ada aku yang peduli banget sama kamu.",
  "Taruh dulu semuanya. Kamu udah berusaha banyak hari ini. Istirahat ya, besok kita mulai pelan-pelan lagi.",
  "Aku juga kangen. Coba lihat langit, kita lagi lihat langit yang sama. Dan nanti, ayo ketemu.",
@@ -194,7 +191,6 @@ envs.forEach((b,i)=>b.addEventListener("click",()=>{
   wm.hidden=false;wm.textContent=WHEN[i];wm.classList.remove("pop");void wm.offsetWidth;wm.classList.add("pop");
   const r=b.getBoundingClientRect();hearts(r.left+r.width/2,r.top,5)}));
 
-/* ---- Game tangkap hati ---- */
 const arena=$("#arena"), sc=$("#score"), gb=$("#game-btn"), gm=$("#game-msg");
 let gs=0, gn=0, gt=null, gend=null, won=false;
 function spawn(){const h=document.createElement("button");h.className="fh";h.type="button";h.textContent=["♡","♥","💗"][gn%3];
@@ -211,7 +207,6 @@ gb.addEventListener("click",()=>{if(gt)return;gs=0;gn=0;won=false;sc.textContent
   $$(".fh",arena).forEach(x=>x.remove());gb.disabled=true;gb.textContent="Ayo cepat...";
   gt=setInterval(()=>{if(gn>=18){clearInterval(gt);gend=setTimeout(()=>{if(!won){stopG();say("Yah, kelewat beberapa. Coba lagi ya, aku nunggu.")}},4800);return}spawn();gn++},650)});
 
-/* ---- Angka-angka: hitung naik + detik live ---- */
 function countUp(el){const to=+el.dataset.to,t0=performance.now();
   (function f(t){const p=Math.min((t-t0)/1400,1);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(t0)}
 const nums=$$("[data-to]");
@@ -219,13 +214,11 @@ if("IntersectionObserver" in window){const co=new IntersectionObserver(es=>es.fo
 else nums.forEach(n=>n.textContent=n.dataset.to);
 let secs=0;const se=$("#secs");setInterval(()=>{if(!$("#site").hidden)se.textContent=++secs},1000);
 
-/* ---- Janji kecil ---- */
 const prs=$$(".pr");
 prs.forEach(b=>b.addEventListener("click",()=>{
   b.classList.add("sealed");$("i",b).textContent="✓";const r=b.getBoundingClientRect();hearts(r.left+30,r.top+10,5);
   if(prs.every(x=>x.classList.contains("sealed"))){const d=$("#promise-done");d.hidden=false;d.classList.add("pop");if(!reduce)hearts(innerWidth/2,innerHeight/2,16)}}));
 
-/* ---- Jejak hati di kursor + efek miring 3D ---- */
 let lastT=0;
 document.addEventListener("pointermove",e=>{
   if(e.pointerType!=="mouse"||reduce||!document.body.classList.contains("in-site"))return;
