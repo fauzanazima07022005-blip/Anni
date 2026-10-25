@@ -41,10 +41,13 @@ tb.addEventListener("click",()=>{
   const n=cur==="dark"?"light":"dark";theme(n);store.set("ofp_theme",n)});
 
 function reveal(){
-  const t=$$(".sec h2,.reasons li,.tl li,.shot");
-  t.forEach(e=>e.classList.add("rv"));
+  const t=$$(".sec h2,.sec .lead,.reasons li,.tl li,.shot,.quote,.hugwrap,.env,.stats div,.pr,.flip,.arena,.seal,.heartqr");
+  const V=["up","left","right","zoom"],SC=$$(".sec");
+  t.forEach(e=>{e.classList.add("rv");const sc=e.closest(".sec"),si=sc?SC.indexOf(sc):0;
+    if(!e.matches(".shot"))e.dataset.v=V[si%4];
+    const sib=sc?$$(".rv",sc):[e];e.style.setProperty("--rd",(Math.min(sib.indexOf(e),8)*.09).toFixed(2)+"s")});
   if(!("IntersectionObserver" in window)){t.forEach(e=>e.classList.add("in"));return}
-  const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}}),{threshold:.15});
+  const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");if(x.target.matches("h2")){const sc=x.target.closest(".sec");if(sc)sc.classList.add("seen")}io.unobserve(x.target)}}),{threshold:.15});
   t.forEach(e=>io.observe(e));
 }
 
@@ -171,10 +174,23 @@ const df=$("#depth-fill"), dn=$("#depth-num");
 function depth(){const m=document.documentElement.scrollHeight-innerHeight,p=m>0?Math.min(scrollY/m,1):0;
   df.style.transform=`scaleY(${p})`;dn.textContent=Math.round(p*40)+" m";root.style.setProperty("--p",p.toFixed(3))}
 addEventListener("scroll",depth,{passive:true});
+
+/* animasi pergantian bagian */
+const HUE={top:0,gallery:-12,why:8,boost:-6,hug:14,letter:-18,timeline:6,fact:-10,when:12,game:-4,stats:10,promise:-14,qr:4,wa:0};
+let lastSec="",lastSw=0;
+function sectionChange(id){
+  root.style.setProperty("--hue",(HUE[id]||0)+"deg");
+  if(id===lastSec)return;const first=!lastSec;lastSec=id;
+  if(first||reduce)return;
+  dn.classList.remove("flash");void dn.offsetWidth;dn.classList.add("flash");
+  const n=performance.now();if(n-lastSw<900)return;lastSw=n;
+  const sw=document.createElement("div");sw.className="sweep";document.body.appendChild(sw);setTimeout(()=>sw.remove(),1100);
+  for(let i=0;i<6;i++)setTimeout(()=>hearts(innerWidth*(.15+Math.random()*.7),innerHeight*.85,1),i*110)}
 const links=$$(".nav ul a");
 if("IntersectionObserver" in window){const so=new IntersectionObserver(es=>es.forEach(x=>{
-  if(x.isIntersecting)links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+x.target.id))}),{rootMargin:"-45% 0px -50% 0px"});
-  $$("#top,#gallery,#why,#hug,#letter,#wa").forEach(e=>so.observe(e))}
+  if(x.isIntersecting){const m=links.find(a=>a.getAttribute("href")==="#"+x.target.id);
+    if(m)links.forEach(a=>a.classList.toggle("on",a===m));sectionChange(x.target.id)}}),{rootMargin:"-45% 0px -50% 0px"});
+  $$("#top,#gallery,#why,#boost,#hug,#letter,#timeline,#fact,#when,#game,#stats,#promise,#qr,#wa").forEach(e=>so.observe(e))}
 if(!reduce)setInterval(()=>{const b=document.createElement("span"),z=6+Math.random()*16;b.className="bub";
   b.style.cssText=`left:${Math.random()*100}%;--s:${z}px;--dx:${Math.random()*80-40}px`;
   petals.appendChild(b);setTimeout(()=>b.remove(),15500)},1300);
