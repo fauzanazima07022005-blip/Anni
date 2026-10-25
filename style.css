@@ -789,3 +789,48 @@ html body #depth-num.flash{animation:numFlash .9s}
 @keyframes numFlash{40%{color:#fff;text-shadow:0 0 14px var(--gold);transform:scale(1.5)}}
 html body .glow{filter:hue-rotate(var(--hue,0deg));transition:filter 1.6s}
 @media(prefers-reduced-motion:reduce){.sweep{display:none}html body .rv{translate:0 0;scale:1}}
+
+
+/* ===== REVISI: transisi halus, cahaya latar redup, tulisan kecil dibesarkan ===== */
+/* 1. hilangkan efek yang mengganggu */
+.sweep{display:none!important}
+html body .sec h2.in{animation:none}
+html body .sec.seen::after{animation:none;text-shadow:0 0 8px rgba(255,79,160,.5)}
+html body #depth-num.flash{animation:none}
+html body .glow{filter:none}
+.glow::after{display:none}
+
+/* 2. transisi antar bagian: naik pelan, tanpa buram, tanpa kedip */
+html body .rv{translate:0 26px;scale:1;filter:none;
+  transition:opacity .8s var(--rd,0s) ease,transform .8s var(--rd,0s) cubic-bezier(.2,.8,.2,1),translate .8s var(--rd,0s) cubic-bezier(.2,.8,.2,1)}
+html body .rv[data-v=left]{translate:-26px 0}
+html body .rv[data-v=right]{translate:26px 0}
+html body .rv[data-v=zoom]{translate:0 26px;scale:1}
+html body .rv.in{translate:0 0;scale:1;filter:none}
+
+/* 3. latar tidak lagi berkedip dan lebih redup */
+html body .glow{animation-duration:45s;
+  background:radial-gradient(60vmax 60vmax at 15% 0%,rgba(255,79,160,.18),transparent 60%),radial-gradient(55vmax 55vmax at 92% 100%,rgba(255,150,80,.09),transparent 60%),radial-gradient(40vmax 40vmax at 85% 18%,rgba(200,40,120,.14),transparent 60%)}
+body::after{background:conic-gradient(from 195deg at 50% -12%,transparent 0 38deg,rgba(255,150,200,.06) 50deg,transparent 62deg 98deg,rgba(255,207,107,.04) 112deg,transparent 126deg);animation:raysSoft 45s ease-in-out infinite alternate}
+@keyframes raysSoft{from{transform:rotate(-2deg);opacity:.5}to{transform:rotate(2deg);opacity:.8}}
+html body .stars{animation:twinkleSoft 10s ease-in-out infinite alternate}
+@keyframes twinkleSoft{from{opacity:.45}to{opacity:.7}}
+html body .sea svg{fill:rgba(255,79,160,.12)}
+html body .sea svg+svg{fill:rgba(255,170,100,.08)}
+html body .arch{animation:up 1s .9s both}
+html body .btn{animation:none}
+
+/* 4. tulisan kecil dibesarkan */
+html body .small,html body .hero .small{font-size:.95rem!important;letter-spacing:.22em}
+html body .sec h2::before{font-size:.95rem;letter-spacing:.2em;margin-bottom:1rem}
+html body .cue{font-size:.9rem}
+html body .tl li h3::before{font-size:.85rem}
+html body .shot::after{font-size:1rem!important}
+html body .stats span{font-size:1.05rem}
+html body .depth{font-size:.85rem}
+html body .seal__hint{font-size:.85rem}
+html body .nav ul a{font-size:.98rem}
+html body .lead{font-size:1.1rem}
+html body .reasons p,html body .tl p,html body .tl span{font-size:1.05rem}
+html body .env{font-size:1.05rem}
+html body .pr{font-size:1.05rem}
