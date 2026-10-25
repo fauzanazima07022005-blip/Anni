@@ -834,3 +834,28 @@ html body .lead{font-size:1.1rem}
 html body .reasons p,html body .tl p,html body .tl span{font-size:1.05rem}
 html body .env{font-size:1.05rem}
 html body .pr{font-size:1.05rem}
+
+/* ===== REVISI 2: jarak antar-bagian lebih lega, transisi simpel, ukuran tulisan dikembalikan ===== */
+/* 1. jarak antar-bagian lebih lega, tiap bagian terasa seperti satu "slide" */
+html body .sec,html body .sec:nth-of-type(n){padding:6.5rem 1.2rem!important;min-height:85svh;align-content:center}
+
+/* 2. transisi simpel: semua muncul naik pelan, satu arah, jeda singkat */
+html body .rv{translate:0 24px;scale:1;filter:none;
+  transition:opacity .7s calc(var(--rd,0s)*.6) ease,transform .7s calc(var(--rd,0s)*.6) ease,translate .7s calc(var(--rd,0s)*.6) ease}
+html body .rv[data-v=left],html body .rv[data-v=right],html body .rv[data-v=zoom]{translate:0 24px}
+html body .rv.in{translate:0 0;scale:1}
+html body .sec::after{display:none}
+
+/* 3. hanya tulisan kuning yang dibesarkan; sisanya kembali ke ukuran sebelumnya */
+html body .small,html body .hero .small{font-size:.95rem!important}
+html body .sec h2::before{font-size:.95rem}
+html body .tl li h3::before{font-size:.85rem}
+html body .lead{font-size:1.05rem}
+html body .reasons p,html body .tl p{font-size:1rem}
+html body .env,html body .pr{font-size:1rem}
+html body .stats span{font-size:.9rem}
+html body .nav ul a{font-size:.88rem}
+html body .depth{font-size:.7rem}
+html body .seal__hint{font-size:.68rem}
+html body .cue{font-size:.68rem}
+html body .shot::after{font-size:.8rem!important}
