@@ -761,3 +761,31 @@ html body .sec,html body .sec:nth-of-type(n){background:none!important;border:0!
   -webkit-backdrop-filter:none!important;backdrop-filter:none!important;padding:4.5rem 1.2rem!important;margin:0 auto!important}
 html body .sec::before{display:none!important}
 html body .marquee{border-block:0!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+
+
+/* ===== ANIMASI PERGANTIAN BAGIAN (Beranda -> Momen -> dst) ===== */
+/* isi muncul berurutan dari arah yang berbeda tiap bagian */
+html body .rv{translate:0 34px;scale:.97;
+  transition:opacity .9s var(--rd,0s),transform .9s var(--rd,0s) cubic-bezier(.2,.9,.3,1),translate .9s var(--rd,0s) cubic-bezier(.2,.9,.3,1),scale .9s var(--rd,0s) cubic-bezier(.2,.9,.3,1),filter .9s var(--rd,0s)}
+html body .rv[data-v=left]{translate:-54px 0}
+html body .rv[data-v=right]{translate:54px 0}
+html body .rv[data-v=zoom]{translate:0 0;scale:.82}
+html body .rv.in{translate:0 0;scale:1}
+/* judul membuka pelan dari renggang */
+html body .sec h2.in{animation:titleIn 1.1s .15s both}
+@keyframes titleIn{from{letter-spacing:.06em;filter:blur(10px);opacity:0}to{letter-spacing:normal;filter:none;opacity:1}}
+/* garis pemisah dengan hati di tiap awal bagian */
+html body .sec{position:relative}
+html body .sec::after{content:"♡";display:grid;place-items:center;position:absolute;top:0;left:50%;width:min(20rem,70%);height:1.6rem;translate:-50% -50%;scale:0 1;opacity:0;
+  color:var(--rose);font-size:1rem;text-shadow:0 0 14px var(--rose);
+  background:linear-gradient(90deg,transparent,rgba(255,130,195,.6) 36%,transparent 36%,transparent 64%,rgba(255,130,195,.6) 64%,transparent) center/100% 1px no-repeat;
+  transition:scale 1.1s .1s cubic-bezier(.2,.9,.3,1),opacity .8s}
+html body .sec.seen::after{scale:1 1;opacity:1;animation:heartGlow 2.6s 1.3s ease-in-out infinite}
+@keyframes heartGlow{50%{text-shadow:0 0 26px #ff4fa0,0 0 8px #fff}}
+/* sapuan cahaya saat pindah bagian + angka kedalaman berkedip + warna latar bergeser */
+.sweep{position:fixed;inset:0;z-index:45;pointer-events:none;background:linear-gradient(0deg,rgba(255,79,160,.28),rgba(255,207,107,.1) 40%,transparent 70%);animation:sweepUp 1s cubic-bezier(.5,0,.3,1) forwards}
+@keyframes sweepUp{from{transform:translateY(100%)}to{transform:translateY(-100%)}}
+html body #depth-num.flash{animation:numFlash .9s}
+@keyframes numFlash{40%{color:#fff;text-shadow:0 0 14px var(--gold);transform:scale(1.5)}}
+html body .glow{filter:hue-rotate(var(--hue,0deg));transition:filter 1.6s}
+@media(prefers-reduced-motion:reduce){.sweep{display:none}html body .rv{translate:0 0;scale:1}}
