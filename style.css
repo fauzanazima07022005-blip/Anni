@@ -751,3 +751,13 @@ html body .rv{filter:blur(8px);transition:opacity .9s,transform .9s cubic-bezier
 html body .rv.in{filter:none}
 html body .hero h1{text-shadow:0 0 50px rgba(255,79,160,.3)}
 @media(prefers-reduced-motion:reduce){body::after,.shot,.seal,.btn{animation:none!important}}
+
+/* ===== PERBAIKAN LAYAR PEMBUKA: tombol "Buka hadiahnya" dan hati muncul lagi ===== */
+html body .opening__text>.btn{animation:up .9s calc(var(--i)*1.1s + .2s) forwards,btnGlow 2.8s 4.5s ease-in-out infinite}
+html body .opening__text>.orb{animation:up .9s .2s forwards,beat 1.8s 1.3s infinite}
+
+/* ===== TANPA KOTAK: isi tiap bagian menyatu langsung dengan latar ===== */
+html body .sec,html body .sec:nth-of-type(n){background:none!important;border:0!important;box-shadow:none!important;border-radius:0!important;
+  -webkit-backdrop-filter:none!important;backdrop-filter:none!important;padding:4.5rem 1.2rem!important;margin:0 auto!important}
+html body .sec::before{display:none!important}
+html body .marquee{border-block:0!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
