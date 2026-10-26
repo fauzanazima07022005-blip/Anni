@@ -18,13 +18,29 @@ document.addEventListener("pointerdown",e=>{if(!e.target.closest("input,.hugbtn"
 const audio=$("#audio"), mb=$("#music-btn");
 const mf=$("#music-float");
 audio.volume=.6;
-function setMusic(on){[mb,mf].forEach(b=>{if(b)b.textContent=on?"❚❚":"♪"});if(mf)mf.classList.toggle("on",on)}
-function playMusic(){return audio.play().then(()=>setMusic(true)).catch(()=>{})}
-function toggleMusic(){if(!audio.paused){audio.pause();setMusic(false)}else playMusic()}
+audio.setAttribute("playsinline","");
+/* di jaringan cepat, mulai muat lagu lebih awal supaya cepat bunyi di HP */
+const net=navigator.connection;
+if(!(net&&(net.saveData||/2g|3g/.test(net.effectiveType||""))))audio.preload="auto";
+let musicLoading=false;
+function setMusic(on,loading){[mb,mf].forEach(b=>{if(b)b.textContent=loading?"…":on?"❚❚":"♪"});if(mf)mf.classList.toggle("on",on)}
+function playMusic(){
+  musicLoading=true;setMusic(false,true);
+  const p=audio.play();
+  return (p&&p.then?p:Promise.resolve()).then(()=>{musicLoading=false;setMusic(true)})
+    .catch(()=>{musicLoading=false;setMusic(false);retryOnTap()})}
+function retryOnTap(){
+  const go=()=>{removeEventListener("touchend",go);removeEventListener("pointerup",go);if(audio.paused&&!musicLoading)playMusic()};
+  addEventListener("touchend",go,{once:true});addEventListener("pointerup",go,{once:true})}
+function toggleMusic(){
+  if(musicLoading)return;
+  if(!audio.paused){audio.pause();setMusic(false);return}
+  if(audio.networkState===3||audio.error)audio.load();
+  playMusic()}
 if(mb)mb.addEventListener("click",toggleMusic);
 if(mf)mf.addEventListener("click",toggleMusic);
-const asrc=$("#audio source");
-if(asrc)asrc.addEventListener("error",()=>{if(mf)mf.hidden=true;if(mb)mb.hidden=true});
+audio.addEventListener("waiting",()=>setMusic(false,true));
+audio.addEventListener("playing",()=>{musicLoading=false;setMusic(true)});
 
 $("#open-btn").addEventListener("click",()=>{
   hearts(innerWidth/2,innerHeight/2,12);
