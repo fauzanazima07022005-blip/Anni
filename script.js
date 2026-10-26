@@ -246,12 +246,9 @@ $$(".shot,.env").forEach(el=>{
 /* tambahan: cahaya lembut mengikuti jari / kursor */
 addEventListener("pointermove",e=>{root.style.setProperty("--mx",e.clientX+"px");root.style.setProperty("--my",e.clientY+"px")},{passive:true});
 
-/* pembatas ombak antar-bagian + gerak pelan kata bayangan */
+/* pembatas ombak antar-bagian */
 (function(){
   const secs=$$(".sec");
   secs.forEach((s,i)=>{if(i===0)return;const d=document.createElement("div");d.className="wdiv";d.setAttribute("aria-hidden","true");s.parentNode.insertBefore(d,s)});
-  function par(){const h=innerHeight;secs.forEach(s=>{const r=s.getBoundingClientRect();if(r.bottom<-200||r.top>h+200)return;
-    s.style.setProperty("--sy",(((r.top+r.height/2)-h/2)*-.09).toFixed(1)+"px")})}
-  if(!reduce){addEventListener("scroll",par,{passive:true});par()}
 })();
 })();
