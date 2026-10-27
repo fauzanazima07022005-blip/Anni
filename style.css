@@ -885,3 +885,4 @@ html body .sec>*:not(.rise){position:relative;z-index:1}
 #site::after{content:"";position:fixed;left:calc(1.1rem + .56rem);top:calc(50% - 11rem);height:3.6rem;width:1px;z-index:20;pointer-events:none;
   background:linear-gradient(transparent,var(--rose))}
 @media(max-width:1000px){#site::before,#site::after{display:none}}
+html body .hero h1{font-size:clamp(2rem,4.6vw,3.4rem)}
