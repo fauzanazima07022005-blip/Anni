@@ -19,7 +19,6 @@ const audio=$("#audio"), mb=$("#music-btn");
 const mf=$("#music-float");
 audio.volume=.6;
 audio.setAttribute("playsinline","");
-/* di jaringan cepat, mulai muat lagu lebih awal supaya cepat bunyi di HP */
 const net=navigator.connection;
 if(!(net&&(net.saveData||/2g|3g/.test(net.effectiveType||""))))audio.preload="auto";
 let musicLoading=false;
@@ -191,7 +190,6 @@ function depth(){const m=document.documentElement.scrollHeight-innerHeight,p=m>0
   df.style.transform=`scaleY(${p})`;dn.textContent=Math.round(p*40)+" m";root.style.setProperty("--p",p.toFixed(3))}
 addEventListener("scroll",depth,{passive:true});
 
-/* pergantian bagian: efek berlebihan dimatikan, cukup isi muncul halus */
 let lastSec="";
 function sectionChange(id){lastSec=id}
 const links=$$(".nav ul a");
@@ -259,10 +257,8 @@ $$(".shot,.env").forEach(el=>{
     el.style.transition="transform .12s";el.style.transform=`perspective(600px) rotateY(${x*14}deg) rotateX(${-y*14}deg) scale(1.03)`});
   el.addEventListener("pointerleave",()=>{el.style.transition="";el.style.transform=""})});
 
-/* tambahan: cahaya lembut mengikuti jari / kursor */
 addEventListener("pointermove",e=>{root.style.setProperty("--mx",e.clientX+"px");root.style.setProperty("--my",e.clientY+"px")},{passive:true});
 
-/* pembatas ombak antar-bagian */
 (function(){
   const secs=$$(".sec");
   secs.forEach((s,i)=>{if(i===0)return;const d=document.createElement("div");d.className="wdiv";d.setAttribute("aria-hidden","true");s.parentNode.insertBefore(d,s)});
