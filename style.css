@@ -803,3 +803,89 @@ html body .sec>*:not(.rise){position:relative;z-index:1}
 #site::after{content:"";position:fixed;left:calc(1.1rem + .56rem);top:calc(50% - 11rem);height:3.6rem;width:1px;z-index:20;pointer-events:none;
   background:linear-gradient(transparent,var(--rose))}
 @media(max-width:1000px){#site::before,#site::after{display:none}}
+
+/* ==========================================================================
+   TIMELINE ROMANTIS MODERN — bagian BAB ("Cerita kita")
+   Garis di tengah, kartu BAB berselang-seling kiri-kanan (01 kiri, 02 kanan, ...).
+   Hanya mengubah tata letak dan tampilan. Isi, judul, nomor BAB, dan JavaScript tidak berubah.
+   ========================================================================== */
+html body #timeline{overflow-x:clip}
+html body #timeline .tl{--g:2.2rem;--dot:12px;--top:1.45rem;--L:1.7rem;
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:calc(var(--g)*2);row-gap:.9rem;
+  position:relative;width:100%;max-width:62rem;margin:0 auto!important;padding:0!important;border:0!important;list-style:none}
+/* garis timeline di tengah */
+html body #timeline .tl::before{content:"";position:absolute;left:50%!important;right:auto!important;top:0;bottom:0;width:2px;translate:-50% 0;border-radius:2px;
+  background:linear-gradient(var(--gold),var(--rose));box-shadow:0 0 12px rgba(255,79,160,.6)}
+
+/* kartu BAB: kaca transparan, border pink tipis, sudut membulat */
+html body #timeline .tl li,html body #timeline .tl li:nth-child(even){
+  position:relative;width:100%!important;max-width:min(25rem,100%);margin:0!important;padding:1.15rem 1.3rem!important;text-align:left!important;
+  background:linear-gradient(145deg,rgba(255,110,185,.13),rgba(255,110,185,.03))!important;
+  border:1px solid rgba(255,130,195,.32)!important;border-radius:1.2rem!important;
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  box-shadow:0 14px 30px -18px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.08)!important;
+  transition:opacity .8s calc(var(--rd,0s)*.6) ease,translate .8s calc(var(--rd,0s)*.6) cubic-bezier(.2,.8,.2,1),transform .35s ease,box-shadow .35s ease,border-color .35s ease}
+html body #timeline .tl li h3{font-size:1.2rem}
+html body #timeline .tl li p{font-size:1rem}
+/* hover: sedikit membesar dan bercahaya */
+html body #timeline .tl li:hover{transform:scale(1.03);z-index:2;border-color:rgba(255,130,195,.7)!important;
+  box-shadow:0 18px 40px -14px rgba(255,79,160,.5),0 0 26px rgba(255,79,160,.28),inset 0 1px 0 rgba(255,255,255,.12)!important}
+html body #timeline .tl li:hover::before{box-shadow:0 0 0 2px var(--rose),0 0 22px rgba(255,79,160,1)}
+
+/* titik indikator dengan cahaya lembut */
+html body #timeline .tl li::before,html body #timeline .tl li:nth-child(even)::before{
+  content:"";display:block;position:absolute;top:var(--top);width:var(--dot);height:var(--dot);border-radius:50%;z-index:2;
+  background:var(--bg)!important;box-shadow:0 0 0 2px var(--rose),0 0 10px rgba(255,79,160,.6);animation:dotGlow 3.2s ease-in-out infinite}
+html body #timeline .tl li:last-child::before{background:var(--gold)!important;box-shadow:0 0 0 2px var(--gold),0 0 14px rgba(255,207,107,.8);animation:dotGlowGold 3.2s ease-in-out infinite}
+@keyframes dotGlow{50%{box-shadow:0 0 0 2px var(--rose),0 0 18px rgba(255,79,160,.95)}}
+@keyframes dotGlowGold{50%{box-shadow:0 0 0 2px var(--gold),0 0 20px rgba(255,207,107,1)}}
+
+/* LAPTOP dan TABLET: kartu berselang-seling kiri-kanan, saling menyela agar tidak terlalu panjang */
+@media(min-width:640px){
+  html body #timeline .tl li:nth-child(odd){grid-column:1;justify-self:end}
+  html body #timeline .tl li:nth-child(even){grid-column:2;justify-self:start}
+  html body #timeline .tl li:nth-child(1){grid-row:1/span 2}
+  html body #timeline .tl li:nth-child(2){grid-row:2/span 2}
+  html body #timeline .tl li:nth-child(3){grid-row:3/span 2}
+  html body #timeline .tl li:nth-child(4){grid-row:4/span 2}
+  html body #timeline .tl li:nth-child(5){grid-row:5/span 2}
+  html body #timeline .tl li:nth-child(6){grid-row:6/span 2}
+  html body #timeline .tl li:nth-child(7){grid-row:7/span 2}
+  html body #timeline .tl li:nth-child(8){grid-row:8/span 2}
+  html body #timeline .tl li:nth-child(9){grid-row:9/span 2}
+  html body #timeline .tl li:nth-child(10){grid-row:10/span 2}
+  html body #timeline .tl li:nth-child(odd)::before{right:calc(-1*var(--g) - var(--dot)/2)!important;left:auto!important}
+  html body #timeline .tl li:nth-child(even)::before{left:calc(-1*var(--g) - var(--dot)/2)!important;right:auto!important}
+  /* penghubung tipis antara kartu dan titik */
+  html body #timeline .tl li::after{content:"";position:absolute;top:calc(var(--top) + var(--dot)/2 - .5px);height:1px;width:calc(var(--g) - var(--dot)/2)}
+  html body #timeline .tl li:nth-child(odd)::after{right:calc(var(--dot)/2 - var(--g));background:linear-gradient(90deg,rgba(255,130,195,.15),rgba(255,130,195,.65))}
+  html body #timeline .tl li:nth-child(even)::after{left:calc(var(--dot)/2 - var(--g));background:linear-gradient(90deg,rgba(255,130,195,.65),rgba(255,130,195,.15))}
+}
+/* TABLET: kartu dan jarak sedikit lebih kecil */
+@media(min-width:640px) and (max-width:899px){
+  html body #timeline .tl{--g:1.5rem}
+  html body #timeline .tl li,html body #timeline .tl li:nth-child(even){max-width:min(21rem,100%);padding:.95rem 1.05rem!important}
+  html body #timeline .tl li h3{font-size:1.08rem}
+  html body #timeline .tl li p{font-size:.95rem}
+}
+/* HP: garis pindah ke kiri, semua kartu satu kolom */
+@media(max-width:639px){
+  html body #timeline .tl{grid-template-columns:minmax(0,1fr);column-gap:0;row-gap:1.1rem;padding-left:2.2rem!important}
+  html body #timeline .tl::before{left:calc(2.2rem - var(--L) - 1px)!important;translate:none}
+  html body #timeline .tl li,html body #timeline .tl li:nth-child(even){grid-column:1;justify-self:stretch;max-width:none}
+  html body #timeline .tl li::before,html body #timeline .tl li:nth-child(even)::before{left:calc(-1*var(--L) - var(--dot)/2)!important;right:auto!important}
+  html body #timeline .tl li::after{content:"";position:absolute;top:calc(var(--top) + var(--dot)/2 - .5px);height:1px;left:calc(var(--dot)/2 - var(--L));width:calc(var(--L) - var(--dot)/2);
+    background:linear-gradient(90deg,rgba(255,130,195,.65),rgba(255,130,195,.15))}
+}
+
+/* muncul halus saat digulir: fade-in + sedikit slide dari kiri (kartu ganjil) atau kanan (kartu genap) */
+html body #timeline .tl li.rv:nth-child(odd){translate:-44px 0}
+html body #timeline .tl li.rv:nth-child(even){translate:44px 0}
+@media(max-width:639px){
+  html body #timeline .tl li.rv:nth-child(odd),html body #timeline .tl li.rv:nth-child(even){translate:-28px 0}
+}
+html body #timeline .tl li.rv.in{translate:0 0}
+@media(prefers-reduced-motion:reduce){
+  html body #timeline .tl li::before{animation:none}
+  html body #timeline .tl li.rv{translate:0 0}
+}
